@@ -1,27 +1,18 @@
-import React from 'react';
-import Background from '../styles/images/london.jpg';
-
-
+import React, {Component} from 'react';
+import style from '../styles/css/styles.css';
 import {Button} from 'reactstrap';
-const styles = {
-    paperContainer: {
-        backgroundImage: 'url(' + Background + ')',
-        backgroundSize: 'cover',
-        overflow: 'hidden',
-        height:'100vh',
-        alignContent:'center',
-        alignItems: 'center',
-        display: 'flex',
-        justifyContent: 'center'
-    }
-};
+
 
 class Home extends React.Component {
     render() {
         return (
             <div>
-                <div style={styles.paperContainer}>
-                    <Button href="/register" color="primary" size="lg">Register</Button>{' '}
+                <div className='paperContainer'>
+                    <h1 className='homeHeader'>CAMPUS LISTS</h1>
+                    <div style={{display:'inline', marginTop:'20px'}}>
+                    <Button href="/signup" color="secondary" size="lg" className='signUp'>Sign Up</Button>
+                    <Button href="/register" color="primary" size="lg" className='login'>Login</Button>
+                    </div>
                 </div>
             </div>
         );
