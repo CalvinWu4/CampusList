@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
-import { Button, Form, FormFeedback, FormGroup, Label, Input, FormText,Row, Col, Container} from 'reactstrap';
-import {Link, Redirect} from 'react-router-dom';
+import React from 'react';
+import { Button, Form, FormFeedback, FormGroup, Label, Input, Row, Col, Container} from 'reactstrap';
+import {Link} from 'react-router-dom';
 class Register extends React.Component {
 
 
@@ -36,7 +36,7 @@ class Register extends React.Component {
             this.setState({zip:this.props.location.state.formValues.zip});
             this.setState({status:this.props.location.state.formValues.status});
             this.setState({payment:this.props.location.state.formValues.payment});
-            if (this.props.location.state.formValues.city!=""){
+            if (this.props.location.state.formValues.city !== ""){
                 this.setState({link:false});
             }
         }
@@ -123,7 +123,6 @@ class Register extends React.Component {
         };
 
     render() {
-        let link;
         return (
             <Container>
                 <Row style={{justifyContent:'center', backgroundColor: '#ADD8E6', marginBottom: '10px'}} ><h1>Register</h1></Row>
@@ -210,8 +209,8 @@ class Register extends React.Component {
                     </Link>
             </Form>
             </Container>
-
         );
     }
 }
+
 export default Register;
