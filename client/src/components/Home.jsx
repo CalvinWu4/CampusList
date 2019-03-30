@@ -3,12 +3,10 @@ import style from '../styles/css/styles.css';
 import {Button} from 'reactstrap';
 
 const styles = {
-
     header:{
         fontFamily: "Lato",
         fontSize:70,
         color:'white'
-
     },
 };
 
