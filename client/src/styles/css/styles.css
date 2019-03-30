@@ -4,6 +4,9 @@
 .signUp{
     margin-right: 15px;
     line-height: 20px;
+<<<<<<< HEAD
+}
+=======
     padding-left:25px;
     padding-right:25px;
 
@@ -14,6 +17,7 @@
     padding-right:25px;
     padding-left:25px;
 }
+>>>>>>> bdaadae9f0fa8a2dfc7de9a5fbba4e46ef6c96e4
 
 .paperContainer {
     background-image: url('../images/landing.jpg');
@@ -26,4 +30,17 @@
     justify-content: center;
     font-family:Lato;
     flex-direction:column;
+}
+
+.registerModal {
+    background: white;
+    padding: 2.5%;
+}
+
+input {
+    text-align: center;
+}
+
+.registerForm {
+    margin-top: 20%;
 }
