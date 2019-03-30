@@ -5,9 +5,10 @@ import {Button} from 'reactstrap';
 const styles = {
 
     header:{
-        fontFamily: "Lato",
+        fontFamily: "Oswald",
         fontSize:70,
-        color:'white'
+        color:'white',
+        letterSpacing:'5px'
 
     },
 };
@@ -18,9 +19,9 @@ class Home extends React.Component {
             <div>
                 <div className='paperContainer'>
                     <h1 style={styles.header}>CAMPUS LISTS</h1>
-                    <div style={{display:'inline', marginTop:'15px'}}>
+                    <div  style={{display:'inline', marginTop:'25px'}}>
                     <Button href="/register" color="secondary" size="lg" className='signUp'>Sign Up</Button>
-                    <Button href="/register" color="primary" size="lg" style={{marginLeft:'15px', lineHeight:'20px'}}>Login</Button>
+                    <Button href="/register" color="primary" size="lg" className='login'>Login</Button>
                     </div>
                 </div>
             </div>
