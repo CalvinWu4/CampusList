@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Background from '../images/landing.jpg';
+import Background from '../styles/images/landing.jpg';
 
 
 import {Button} from 'reactstrap';
