@@ -1,0 +1,33 @@
+
+.signUp:hover{
+
+}
+.signUp{
+    margin-right: 15px;
+    line-height: 20px;
+}
+
+.paperContainer {
+    background-image: url('../images/landing.jpg');
+    background-size: cover;
+    overflow: hidden;
+    height:100vh;
+    align-content:center;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-direction:column;
+}
+
+.registerModal {
+    background: white;
+    padding: 2.5%;
+}
+
+input {
+    text-align: center;
+}
+
+.registerForm {
+    margin-top: 20%;
+}
