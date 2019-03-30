@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-import Background from '../images/london.jpg';
-
+import Background from '../images/landing.jpg';
 
 import {Form, FormGroup, Label, Row, Input, Col, FormText, Button, Container} from 'reactstrap';
 const styles = {
@@ -12,8 +11,15 @@ const styles = {
         alignContent:'center',
         alignItems: 'center',
         display: 'flex',
-        justifyContent: 'center'
-    }
+        justifyContent: 'center',
+        flexDirection:'column'
+    },
+    header:{
+        fontFamily: "Lato",
+        fontSize:70,
+        color:'white'
+
+    },
 };
 
 class Home extends React.Component {
@@ -21,7 +27,11 @@ class Home extends React.Component {
         return (
             <div>
                 <div style={styles.paperContainer}>
-                    <Button href="/register" color="primary" size="lg">Register</Button>{' '}
+                    <h1 style={styles.header}>CAMPUS LISTS</h1>
+                    <div style={{display:'inline', marginTop:'15px'}}>
+                    <Button href="/register" color="outline-primary" size="lg" style={{backgroundColor: 'white',marginRight:'15px', lineHeight:'20px'}}>Sign Up</Button>
+                    <Button href="/register" color="primary" size="lg" style={{marginLeft:'15px', lineHeight:'20px'}}>Login</Button>
+                    </div>
                 </div>
             </div>
         );
