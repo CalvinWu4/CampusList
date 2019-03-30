@@ -30,7 +30,7 @@ class Home extends React.Component {
                 <div style={styles.paperContainer}>
                     <h1 style={styles.header}>CAMPUS LISTS</h1>
                     <div style={{display:'inline', marginTop:'15px'}}>
-                    <Button href="/register" color="outline-primary" size="lg" style={{backgroundColor: 'white',marginRight:'15px', lineHeight:'20px'}}>Sign Up</Button>
+                    <Button href="/signup" color="outline-primary" size="lg" style={{backgroundColor: 'white',marginRight:'15px', lineHeight:'20px'}}>Sign Up</Button>
                     <Button href="/register" color="primary" size="lg" style={{marginLeft:'15px', lineHeight:'20px'}}>Login</Button>
                     </div>
                 </div>
