@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
-import Background from '../images/london.jpg';
+import React from 'react';
+import Background from '../styles/images/london.jpg';
 
 
-import {Form, FormGroup, Label, Row, Input, Col, FormText, Button, Container} from 'reactstrap';
+import {Button} from 'reactstrap';
 const styles = {
     paperContainer: {
         backgroundImage: 'url(' + Background + ')',

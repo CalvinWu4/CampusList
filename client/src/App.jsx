@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import Home from './components/Home'
-import AppNavbar from './components/appnavbar';
 import Register from './components/Register';
 import Review from './components/Review';
 import {BrowserRouter, Route} from 'react-router-dom';
@@ -27,9 +25,5 @@ class App extends Component {
     );
   }
 }
-{/*<div className="App">*/}
-    {/*<AppNavbar/>*/}
-    {/*<Register onSubmit = {fields=>this.onSubmit(fields)} />*/}
-    {/*<p>{JSON.stringify(this.state.fields)}</p>*/}
-{/*</div>*/}
+
 export default App;

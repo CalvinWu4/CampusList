@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {Container, Button, Row} from 'reactstrap';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
@@ -17,7 +17,7 @@ class Review extends React.Component {
     pushData =e=>{
         axios
             .post('http://localhost:5000/api/form', this.state.formValues)
-            .then(res=>{if (res.status==200){
+            .then(res=>{if (res.status === 200){
                 alert("Registration Complete");
             }});
     };
