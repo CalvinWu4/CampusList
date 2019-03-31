@@ -12,7 +12,8 @@ class SignUp extends React.Component {
         link:true,
         nameError: false,
         emailError: false,
-        passwordError: false
+        passwordError: false,
+        rePasswordError: false
     }
 
     componentDidMount() {
@@ -46,6 +47,16 @@ class SignUp extends React.Component {
                     isError = true;
                 }
                 break;
+            case 'password':
+                if (e.target.value.length < 8) {
+                    isError = true;
+                }
+                break;
+            case 'rePassword':
+                if (e.target.value != this.state.password) {
+                    isError = true;
+                }
+                break;
         }
         let errorName=e.target.name+'Error';
         if (isError){
@@ -60,7 +71,7 @@ class SignUp extends React.Component {
     validateFull = e=>{
         if (
             this.state.nameError || this.state.name.length === 0 || this.state.emailError || this.state.email.length === 0 ||
-                this.state.passwordError || this.state.password.length === 0 || this.state.rePassword.length == 0){
+                this.state.passwordError || this.state.password.length <= 7 || this.state.rePassword != this.state.password){
             console.log('im invalid');
             this.setState({link: true});
         }
@@ -94,17 +105,17 @@ class SignUp extends React.Component {
                     <FormGroup>
                         <Input type='password' name='password' id='password' value={this.state.password} onChange={e=>this.change(e)} 
                             placeholder="Password" invalid={this.state.passwordError}/>
-                        <FormFeedback disabled={this.state.nameError}>Cannot be empty, must contain proper email</FormFeedback>
+                        <FormFeedback disabled={this.state.passwordError}>Password must be at least 8 characters long</FormFeedback>
                     </FormGroup>
 
                     <FormGroup style={{marginBottom: "10%"}}>
                         <Input type='password' name='rePassword' id='rePassword' value={this.state.rePassword} onChange={e=>this.change(e)} 
-                            placeholder="Re-enter Password" invalid={this.state.passwordError}/>
-                        <FormFeedback disabled={this.state.nameError}>Cannot be empty, must contain proper email</FormFeedback>
+                            placeholder="Re-enter Password" invalid={this.state.rePasswordError}/>
+                        <FormFeedback disabled={this.state.rePasswordError}>Passwords do not match</FormFeedback>
                     </FormGroup>
                     
-                        <Button style={{float: "left"}} href="/" color="secondary" size="lg" className='signUp'>Cancel</Button>
-                        <Button style={{float: "right"}} href="/review" color="primary" disabled={this.state.link}>Sign Up</Button>
+                        <Button style={{float: "left", width: "125"}} href="/" color="secondary" size="lg" className='landing-button'>Cancel</Button>
+                        <Button style={{float: "right", width: "125"}} href="/review" color="primary" size="lg" className='landing-button' disabled={this.state.link}>Sign Up</Button>
 
                 </Form>
                 </div>
