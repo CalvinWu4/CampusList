@@ -18,7 +18,7 @@ class SignUp extends React.Component {
 
     componentDidMount() {
         if (this.props.location.state) {
-            this.setState({name:this.props.location.state.formValues.firstName});
+            this.setState({name:this.props.location.state.formValues.name});
             this.setState({email:this.props.location.state.formValues.email});
             this.setState({password:this.props.location.state.forValues.password});
             this.setState({rePassword:this.props.location.state.foreValues.rePassword})
@@ -115,7 +115,7 @@ class SignUp extends React.Component {
                     </FormGroup>
                     
                         <Button style={{float: "left", position: "relative"}} href="/" color="secondary" size="lg" className='landing-button'>Cancel</Button>
-                        <Button style={{float: "right", position: "relative"}} href="/review" color="primary" size="lg" className='landing-button' disabled={this.state.link}>Sign Up</Button>
+                        <Button style={{float: "right", position: "relative"}} href="/homepage" color="primary" size="lg" className='landing-button' disabled={this.state.link}>Sign Up</Button>
                 </Form>
                 </div>
             </div>
