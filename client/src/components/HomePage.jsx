@@ -39,7 +39,7 @@ class HomePage extends React.Component {
             <div>
             <Navbar/>
             <SideNav/>
-                <Container style={{marginTop: 20, marginRight: 100}}>
+                <Container style={{marginTop: 20, marginRight: '7%'}}>
 
                     <Row form >
                         <Col md={10}>
