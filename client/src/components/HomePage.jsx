@@ -16,7 +16,6 @@ import {Link} from 'react-router-dom';
 import ReactDOM from 'react-dom';
 import SideNav from './SideNavigation';
 import Navbar from './NavigationBar';
-import pic from '../styles/images/landing.jpg';
 
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
@@ -69,7 +68,6 @@ class HomePage extends React.Component {
     }
 
     componentDidMount() {
-    console.log(this.state.service_ids);
 
     }
 
@@ -82,9 +80,9 @@ class HomePage extends React.Component {
 
         }
         return(
-            <Link to={{ pathname: '/service', state:id }} style={{borderColor:'black !important'}}>
+            <Link to={{ pathname: '/service', state:listings }} style={{borderColor:'black !important'}}>
             <div style={this.style.listing}  >
-                <img style={this.style.image} src={pic}/>
+                <img style={this.style.image} src={require(listings['picture'])}/>
                 <div style={this.style.listingTitle}>
                     <p style={{fontFamily: "Lato", fontSize:"20px", color:'white'}}>{listings['title']}</p>
                 </div>
