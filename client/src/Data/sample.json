@@ -2,7 +2,7 @@
 	"listings": [{
 			"id": 0,
 			"category": ["tutoring"],
-			"picture": "../styles/images/landing.jpg",
+			"picture": "../styles/images/Physics-Tutoring.jpg",
 			"creator": "",
 			"title": "Physics I Tutoring",
 			"description": "I got an A in Physics let me help you!",
@@ -21,7 +21,7 @@
 		{
 			"id": 1,
 			"category": ["rides"],
-			"picture": "",
+			"picture": "../styles/images/Wegmans-Trip.JPG",
 			"creator": "",
 			"title": "Wegmans Trip",
 			"description": "You can catch a ride with me to Wegmans to get your shopping done.",
@@ -40,7 +40,7 @@
 		{
 			"id": 2,
 			"category": ["party", "rides"],
-			"picture": "",
+			"picture": "../styles/images/Designated-Driver.jpg",
 			"creator": "",
 			"title": "Designated driver",
 			"description": "Let me get you to a party or back home safely",
@@ -59,7 +59,7 @@
 		{
 			"id": 3,
 			"category": ["design"],
-			"picture": "",
+			"picture": "../styles/images/Poster-Design.png",
 			"creator": "",
 			"title": "Freelance Poster Design",
 			"description": "Need a poster to advertise an event? Let me draw it!",
@@ -78,7 +78,7 @@
 		{
 			"id": 4,
 			"category": ["it"],
-			"picture": "",
+			"picture": "../styles/images/Computer-Repair.jpg",
 			"creator": "",
 			"title": "Computer Repair",
 			"description": "I have a computer repair kit so I can do some quick fixes and let you skip the wait at Resnet",
@@ -97,7 +97,7 @@
 		{
 			"id": 5,
 			"category": ["design"],
-			"picture": "",
+			"picture": "../styles/images/LinkedIn-Headshots.jpg",
 			"creator": "",
 			"title": "LinkedIn Headshots",
 			"description": "Dress up and have me take professional headshots for you.",
@@ -116,7 +116,7 @@
 		{
 			"id": 6,
 			"category": ["tutoring"],
-			"picture": "",
+			"picture": "../styles/images/Calculus-Help.png",
 			"creator": "",
 			"title": "Calculus Help",
 			"description": "I am a previous TA for Project Based Calculus I and II. I can answer your questions.",
@@ -135,7 +135,7 @@
 		{
 			"id": 7,
 			"category": ["tutoring"],
-			"picture": "",
+			"picture": "../styles/images/CS-Tutoring.jpg",
 			"creator": "",
 			"title": "CSCI 141 Tutor",
 			"description": "SLI for the past 3 semesters. Always available the night labs are due. ",
@@ -154,7 +154,7 @@
 		{
 			"id": 8,
 			"category": ["tutoring"],
-			"picture": "",
+			"picture": "../styles/images/Essay-Review.jpg",
 			"creator": "",
 			"title": "Essay Review",
 			"description": "The self proclaimed grammar police. Give me at least 10 hours before the deadline to review.",
@@ -173,7 +173,7 @@
 		{
 			"id": 9,
 			"category": ["party", "design"],
-			"picture": "",
+			"picture": "../styles/images/Party-Promotion.jpg",
 			"creator": "",
 			"title": "Party Promotion",
 			"description": "Let met turn your boring 20 person house party into something that rivals Project X",
