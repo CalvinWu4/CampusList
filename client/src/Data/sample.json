@@ -2,7 +2,7 @@
 	"listings": [{
 			"id": 0,
 			"category": ["tutoring"],
-			"picture": "",
+			"picture": "../styles/images/landing.jpg",
 			"creator": "",
 			"title": "Physics I Tutoring",
 			"description": "I got an A in Physics let me help you!",
