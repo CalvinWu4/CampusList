@@ -50,19 +50,15 @@ export default class NavigationBar extends React.Component {
                     <NavbarToggler onClick={this.toggle} />
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="ml-auto" navbar>
-                             <Dropdown className="d-inline-block" onMouseOver={this.onMouseEnter} onMouseLeave={this.onMouseLeave} isOpen={this.state.dropdownOpen} toggle={this.toggle}>
-                                <DropdownToggle className='navBarText' nav caret>
-                                    Profile
-                                </DropdownToggle>
-                                <DropdownMenu right>
-                                    <DropdownItem>
-                                        My Services
-                                    </DropdownItem>
-                                    <DropdownItem>
-                                        My Appointments
-                                    </DropdownItem>
-                                </DropdownMenu>
-                            </Dropdown>
+                             <NavItem>
+                                <NavLink className='navBarText' href="/components/">My Appointments</NavLink>
+                            </NavItem>
+                            <NavItem>
+                                <NavLink className='navBarText' href="/components/">My Services</NavLink>
+                            </NavItem>
+                            <NavItem>
+                                <NavLink className='navBarText' href="/components/">Profile</NavLink>
+                            </NavItem>
                             <NavItem>
                                 <NavLink className='navBarText' href="/components/">Sign Out</NavLink>
                             </NavItem>
