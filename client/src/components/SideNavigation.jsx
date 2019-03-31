@@ -5,17 +5,19 @@ import style from '../styles/css/styles.css';
 import {Button, Form, InputGroup, FormGroup, Label, Input, Row, Col, Container, FormFeedback} from 'reactstrap';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faDollarSign, faCar, faStar, faPaintBrush, faCompactDisc, faLocationArrow, faBook } from '@fortawesome/free-solid-svg-icons'
+import { faDollarSign,faSearch, faCar, faStar, faPaintBrush, faCompactDisc, faLocationArrow, faBook } from '@fortawesome/free-solid-svg-icons'
 
-library.add( faDollarSign, faCar, faStar, faPaintBrush, faCompactDisc, faLocationArrow, faBook);
+library.add( faDollarSign, faCar,faSearch, faStar, faPaintBrush, faCompactDisc, faLocationArrow, faBook);
 
 class SideNavigation extends React.Component {
     state={
         min:'',
         max:'',
         display:'none',
-        location:''
+        location:'',
     };
+
+
     change = e=>{
         this.setState({
             [e.target.name]: e.target.value
@@ -154,6 +156,8 @@ class SideNavigation extends React.Component {
                     </div>
                 </SideNav.Nav>
             </SideNav>
+
+
             </div>
         );
     }
