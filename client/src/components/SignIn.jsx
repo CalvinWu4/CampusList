@@ -68,29 +68,24 @@ class SignUp extends React.Component {
         return (
             <div className='paperContainer'>
                 <div className='registerModal'>
-                <div>
                 
-                <h1 style={{fontFamily: "Lato", color: "#245CB3", textAlign: "center"}}>Sign In</h1>
+                    <h1 style={{fontFamily: "Lato", color: "#245CB3", textAlign: "center", marginBottom: "20%"}}>Sign In</h1>
 
-                <Form className = 'registerForm'>
+                    <Form style={{position: "relative"}}>
+                        <FormGroup>
+                            <Input type='email' name='email' id='email' value={this.state.email} onChange={e=>this.change(e)} 
+                                placeholder="Email" invalid={this.state.emailError}/>
+                            <FormFeedback disabled={this.state.nameError}>Not a valid email</FormFeedback>
+                        </FormGroup>
+                        <FormGroup style={{marginBottom: "20%"}}>
+                            <Input type='password' name='password' id='password' value={this.state.password} onChange={e=>this.change(e)} 
+                                placeholder="Password" invalid={this.state.passwordError}/>
+                            <FormFeedback disabled={this.state.passwordError}>Password is at least 8 characters long</FormFeedback>
+                        </FormGroup>
 
-                    <FormGroup>
-                        <Input type='email' name='email' id='email' value={this.state.email} onChange={e=>this.change(e)} 
-                            placeholder="Email" invalid={this.state.emailError}/>
-                        <FormFeedback disabled={this.state.nameError}>Not a valid email</FormFeedback>
-                    </FormGroup>
-
-                    <FormGroup>
-                        <Input type='password' name='password' id='password' value={this.state.password} onChange={e=>this.change(e)} 
-                            placeholder="Password" invalid={this.state.passwordError}/>
-                        <FormFeedback disabled={this.state.passwordError}>Password is at least 8 characters long</FormFeedback>
-                    </FormGroup>
-                    
-                        <Button style={{float: "left", position: "absolute", bottom: "0"}} href="/" color="secondary" size="lg" className='landing-button'>Cancel</Button>
-                        <Button style={{float: "right"}} href="/review" color="primary" size="lg" className='landing-button' disabled={this.state.link}>Sign In</Button>
-
-                </Form>
-                </div>
+                            <Button style={{float: "left", position: "relative"}} href="/" color="secondary" size="lg" className='landing-button'>Cancel</Button>
+                            <Button style={{float: "right", position: "relative"}} href="/homepage" color="primary" size="lg" className='landing-button' disabled={this.state.link}>Sign In</Button>
+                    </Form>
                 </div>
             </div>
         );

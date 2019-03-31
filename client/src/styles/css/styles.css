@@ -39,15 +39,11 @@
 
 .registerModal {
     background: white;
+    position: fixed;
     padding: 2.5%;
     width: 27%;
-    height: 58%;
 }
 
 input {
     text-align: center;
-}
-
-.registerForm {
-    margin-top: 20%;
 }
