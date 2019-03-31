@@ -39,10 +39,10 @@ class HomePage extends React.Component {
             <div>
             <Navbar/>
             <SideNav/>
-                <Container style={{marginTop: 20, marginRight: '7%'}}>
+                <Container style={{marginTop: 20}}>
 
                     <Row form >
-                        <Col md={10}>
+                        <Col md={12}>
                             <FormGroup>
                                 <Input type='text' name='Search' id='Search' placeholder='Search for service'  />
                             </FormGroup>
