@@ -1,12 +1,14 @@
 @import url('https://fonts.googleapis.com/css?family=Lato|Oswald');
 
 
-.signUp {
+
+.signUp{
     margin-right: 15px;
     line-height: 20px;
     padding-left: 25px;
     padding-right: 25px;
 }
+
 .login{
     margin-left:15px;
     padding-left: 25px;
@@ -45,4 +47,23 @@ input {
 
 .registerForm {
     margin-top: 20%;
+}
+
+.navBar {
+    background-color: #245CB3;
+}
+
+.navBarText {
+    color: white !important;
+    font-size: 1.25em !important;
+}
+
+.navBarHeader {
+    font-size: 2em !important;
+}
+
+.navBarLogo {
+    width: 5%;
+    height: 5%;
+    padding-right: 2%;
 }
