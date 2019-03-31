@@ -5,16 +5,10 @@ import Register from './components/Register';
 import Login from './components/Login';
 import Review from './components/Review';
 import HomePage from './components/HomePage';
+import SignUp from './components/SignUp';
 
 import {BrowserRouter, Route} from 'react-router-dom';
 class App extends Component {
-    state = {
-        fields: {}
-    };
-
-    onSubmit=fields=> {
-        this.setState({fields});
-    };
 
     render() {
     return (
@@ -25,6 +19,7 @@ class App extends Component {
             <Route path='/register'  component={Register}/>
             <Route path='/review' component = {Review}/>
             <Route path='/homepage' component = {HomePage}/>
+            <Route path='/signup' component = {SignUp}/>
             </div>
         </BrowserRouter>
     );
