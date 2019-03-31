@@ -25,10 +25,10 @@ class HomePage extends React.Component {
     style={
       image: {
           width: '247px',
-          height: '150px',
+          height: '147px',
           borderRadius: '30px',
           zIndex: -1,
-          position: 'absolute'
+          position: 'absolute',
 }
       ,
         listing: {
@@ -81,16 +81,15 @@ class HomePage extends React.Component {
             }
 
         }
-        console.log(listings['picture']);
-
-        //listings['picture']
         return(
-            <div style={this.style.listing}>
+            <Link to={{ pathname: '/service', state:id }} style={{borderColor:'black !important'}}>
+            <div style={this.style.listing}  >
                 <img style={this.style.image} src={pic}/>
                 <div style={this.style.listingTitle}>
                     <p style={{fontFamily: "Lato", fontSize:"20px", color:'white'}}>{listings['title']}</p>
                 </div>
             </div>
+            </Link>
         )
     }
     render() {
@@ -114,7 +113,9 @@ class HomePage extends React.Component {
                 <Container style={{maxHeight:'80vh', overflow:'auto'}}>
                     <div style={{display:'inline-block'}}>
                     {this.state.service_ids.map((row,i) => (
-                        this.listing(row,i)
+                        <div style={{display:'inline-block'}}>
+                            {this.listing(row,i)}
+                        </div>
                     ))}
                     </div>
                 </Container>

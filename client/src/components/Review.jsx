@@ -35,7 +35,7 @@ class Review extends React.Component {
                     <h5>Status: {this.state.formValues.status}</h5>
                     <h5>Payment: {this.state.formValues.payment}</h5>
                     <Button style={{float:'right', marginTop:'30px'}} onClick={e=> this.pushData(e)}> Register</Button>
-                    <Link to={{ pathname: '/register', state: this.state }}><Button style={{float:'left', marginTop:'30px'}}>Go Back</Button></Link>
+                        <Link to={{ pathname: '/register', state: this.state }}><Button style={{float:'left', marginTop:'30px'}}>Go Back</Button></Link>
                 </Container>
             </div>
                );
