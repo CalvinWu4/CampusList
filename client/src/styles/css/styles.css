@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Lato|Oswald');
 
 
+
 .signUp{
     margin-right: 15px;
     line-height: 20px;
@@ -8,6 +9,7 @@
     padding-right:25px;
 
 }
+
 .login{
     margin-left:15px;
     line-height:20px;
@@ -26,4 +28,17 @@
     justify-content: center;
     font-family:Lato;
     flex-direction:column;
+}
+
+.registerModal {
+    background: white;
+    padding: 2.5%;
+}
+
+input {
+    text-align: center;
+}
+
+.registerForm {
+    margin-top: 20%;
 }

@@ -20,7 +20,7 @@ class Home extends React.Component {
                 <div className='paperContainer'>
                     <h1 style={styles.header}>CAMPUS LISTS</h1>
                     <div  style={{display:'inline', marginTop:'25px'}}>
-                    <Button href="/register" color="secondary" size="lg" className='signUp'>Sign Up</Button>
+                    <Button href="/signup" color="secondary" size="lg" className='signUp'>Sign Up</Button>
                     <Button href="/register" color="primary" size="lg" className='login'>Login</Button>
                     </div>
                 </div>
