@@ -73,16 +73,19 @@ class HomePage extends React.Component {
 
     listing(id){
         var listings={};
+        var pic='';
         for(var i = 0; i < this.state.services.length; i++) {
             if (this.state.services[i].id===id){
                 listings=this.state.services[i];
+                pic=listings['picture'];
             }
 
         }
+        console.log(typeof (pic));
         return(
             <Link to={{ pathname: '/service', state:listings }} style={{borderColor:'black !important'}}>
             <div style={this.style.listing}  >
-                <img style={this.style.image} src={require(listings['picture'])}/>
+                <img style={this.style.image} src={require("../styles/images/"+listings['picture'] )}/>
                 <div style={this.style.listingTitle}>
                     <p style={{fontFamily: "Lato", fontSize:"20px", color:'white'}}>{listings['title']}</p>
                 </div>
