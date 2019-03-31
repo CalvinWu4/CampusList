@@ -87,9 +87,9 @@ class SignUp extends React.Component {
         return (
             <div className='paperContainer'>
                 <div className='registerModal'>
-                    <h1 style={{fontFamily: "Lato", color: "#245CB3"}}>Create Account</h1>
+                    <h1 style={{fontFamily: "Lato", color: "#245CB3", textAlign: "center", marginBottom: "20%"}}>Create Account</h1>
 
-                <Form className = 'registerForm'>
+                <Form>
                     <FormGroup>
                         <Input type='text' name='name' id='name' value={this.state.name} onChange={e=>this.change(e)} 
                             placeholder="Name" invalid={this.state.nameError}/>
@@ -108,15 +108,14 @@ class SignUp extends React.Component {
                         <FormFeedback disabled={this.state.passwordError}>Password must be at least 8 characters long</FormFeedback>
                     </FormGroup>
 
-                    <FormGroup style={{marginBottom: "10%"}}>
+                    <FormGroup style={{marginBottom: "20%"}}>
                         <Input type='password' name='rePassword' id='rePassword' value={this.state.rePassword} onChange={e=>this.change(e)} 
                             placeholder="Re-enter Password" invalid={this.state.rePasswordError}/>
                         <FormFeedback disabled={this.state.rePasswordError}>Passwords do not match</FormFeedback>
                     </FormGroup>
                     
-                        <Button style={{float: "left", width: "125"}} href="/" color="secondary" size="lg" className='landing-button'>Cancel</Button>
-                        <Button style={{float: "right", width: "125"}} href="/homepage" color="primary" size="lg" className='landing-button' disabled={this.state.link}>Sign Up</Button>
-
+                        <Button style={{float: "left", position: "relative"}} href="/" color="secondary" size="lg" className='landing-button'>Cancel</Button>
+                        <Button style={{float: "right", position: "relative"}} href="/homepage" color="primary" size="lg" className='landing-button' disabled={this.state.link}>Sign Up</Button>
                 </Form>
                 </div>
             </div>
