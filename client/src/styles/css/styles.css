@@ -5,16 +5,22 @@
 .signUp{
     margin-right: 15px;
     line-height: 20px;
-    padding-left:25px;
-    padding-right:25px;
-
+    padding-left: 25px;
+    padding-right: 25px;
 }
 
 .login{
     margin-left:15px;
-    line-height:20px;
-    padding-right:25px;
-    padding-left:25px;
+    padding-left: 25px;
+    line-height: 20px;
+    padding-right: 25px;
+}
+
+.homeHeader{
+    font-family: "Oswald";
+    font-size:70px;
+    color:white;
+    letter-spacing: 3px;
 }
 
 .paperContainer {
