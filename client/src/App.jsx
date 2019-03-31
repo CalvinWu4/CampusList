@@ -8,13 +8,6 @@ import HomePage from './components/HomePage';
 
 import {BrowserRouter, Route} from 'react-router-dom';
 class App extends Component {
-    state = {
-        fields: {}
-    };
-
-    onSubmit=fields=> {
-        this.setState({fields});
-    };
 
     render() {
     return (
