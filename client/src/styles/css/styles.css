@@ -1,12 +1,14 @@
 @import url('https://fonts.googleapis.com/css?family=Lato|Oswald');
 
 
-.signUp {
+
+.signUp{
     margin-right: 15px;
     line-height: 20px;
     padding-left: 25px;
     padding-right: 25px;
 }
+
 .login{
     margin-left:15px;
     padding-left: 25px;
