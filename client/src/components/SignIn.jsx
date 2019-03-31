@@ -68,7 +68,7 @@ class SignUp extends React.Component {
         return (
             <div className='paperContainer'>
                 <div className='registerModal'>
-
+                <div>
                 
                 <h1 style={{fontFamily: "Lato", color: "#245CB3", textAlign: "center"}}>Sign In</h1>
 
@@ -86,10 +86,11 @@ class SignUp extends React.Component {
                         <FormFeedback disabled={this.state.passwordError}>Password is at least 8 characters long</FormFeedback>
                     </FormGroup>
                     
-                        <Button style={{float: "left", width: "125"}} href="/" color="secondary" size="lg" className='landing-button'>Cancel</Button>
-                        <Button style={{float: "right", width: "125"}} href="/review" color="primary" size="lg" className='landing-button' disabled={this.state.link}>Sign In</Button>
+                        <Button style={{float: "left", position: "absolute", bottom: "0"}} href="/" color="secondary" size="lg" className='landing-button'>Cancel</Button>
+                        <Button style={{float: "right"}} href="/review" color="primary" size="lg" className='landing-button' disabled={this.state.link}>Sign In</Button>
 
                 </Form>
+                </div>
                 </div>
             </div>
         );

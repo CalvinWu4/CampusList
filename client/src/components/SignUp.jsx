@@ -108,14 +108,14 @@ class SignUp extends React.Component {
                         <FormFeedback disabled={this.state.passwordError}>Password must be at least 8 characters long</FormFeedback>
                     </FormGroup>
 
-                    <FormGroup style={{marginBottom: "10%"}}>
+                    <FormGroup style={{marginBottom: "30%"}}>
                         <Input type='password' name='rePassword' id='rePassword' value={this.state.rePassword} onChange={e=>this.change(e)} 
                             placeholder="Re-enter Password" invalid={this.state.rePasswordError}/>
                         <FormFeedback disabled={this.state.rePasswordError}>Passwords do not match</FormFeedback>
                     </FormGroup>
                     
-                        <Button style={{float: "left", width: "125"}} href="/" color="secondary" size="lg" className='landing-button'>Cancel</Button>
-                        <Button style={{float: "right", width: "125"}} href="/review" color="primary" size="lg" className='landing-button' disabled={this.state.link}>Sign Up</Button>
+                        <Button style={{float: "left"}} href="/" color="secondary" size="lg" className='landing-button'>Cancel</Button>
+                        <Button style={{float: "right"}} href="/review" color="primary" size="lg" className='landing-button' disabled={this.state.link}>Sign Up</Button>
 
                 </Form>
                 </div>
