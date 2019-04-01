@@ -8,10 +8,10 @@ class Home extends React.Component {
         return (
             <div>
                 <div className='paperContainer'>
-                    <h1 className='homeHeader'>CAMPUS LISTS</h1>
+                    <h1 className='homeHeader'>CAMPUSLIST</h1>
                     <div style={{display:'inline', marginTop:'20px'}}>
-                    <Button href="/signup" color="secondary" size="lg" className='signUp'>Sign Up</Button>
-                    <Button href="/register" color="primary" size="lg" className='login'>Login</Button>
+                    <Button href="/signup" color="secondary" size="lg" className='landing-button'>Sign Up</Button>
+                    <Button href="/signin" color="primary" size="lg" className='landing-button'>Login</Button>
                     </div>
                 </div>
             </div>

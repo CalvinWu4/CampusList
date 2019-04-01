@@ -2,8 +2,9 @@
 
 
 
-.signUp{
+.landing-button{
     margin-right: 15px;
+    width: 125px;
     line-height: 20px;
     padding-left: 25px;
     padding-right: 25px;
@@ -38,7 +39,9 @@
 
 .registerModal {
     background: white;
+    position: fixed;
     padding: 2.5%;
+    width: 27%;
 }
 
 input {
