@@ -52,7 +52,21 @@ class HomePage extends React.Component {
             left:0,
             textAlign:'center',
             borderTop:'solid'
-        }
+        },
+        listingText: {
+            height:'120px',
+            width:'247px',
+            backgroundColor:'#ffffff',
+            verticalAlign: 'baseline',
+            zIndex:-1,
+            position:'absolute',
+            borderBottomLeftRadius:'30px',
+            borderBottomRightRadius:'30px',
+            bottom:0,
+            left:0,
+            textAlign:'center',
+            borderTop:'solid',
+        },
 
     };
     state={
@@ -84,10 +98,15 @@ class HomePage extends React.Component {
         console.log(typeof (pic));
         return(
             <Link to={{ pathname: '/service', state:listings }} style={{borderColor:'black !important'}}>
-            <div style={this.style.listing}  >
+            <div className='listing'style={this.style.listing}  >
                 <img style={this.style.image} src={require("../styles/images/"+listings['picture'] )}/>
-                <div style={this.style.listingTitle}>
+                <div className='listingTitle' style={this.style.listingTitle}>
                     <p style={{fontFamily: "Lato", fontSize:"20px", color:'white'}}>{listings['title']}</p>
+                </div>
+                <div className='listingText' style={this.style.listingText}>
+                    <p style={{fontFamily: "Lato", fontSize:"20px", color:'white'}}>{listings['text']}</p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua.
                 </div>
             </div>
             </Link>
