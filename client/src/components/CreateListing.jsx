@@ -1,14 +1,25 @@
 import React, {Component} from 'react';
-import { Button, Form, FormFeedback, FormGroup, Label, Input, FormText,Row, Col, Container} from 'reactstrap';
+import { Button, Form, FormFeedback, FormGroup, Label, Input, FormText,Row, Col, Container, Dropdown, DropdownItem, DropdownToggle, DropdownMenu} from 'reactstrap';
 import {Link, Redirect} from 'react-router-dom';
-import SignUp from "./SignUp";
+import Navbar from './NavigationBar';
+import SideNav from "./SideNavigation";
 
 class CreateListing extends React.Component {
+
+    constructor(props) {
+        super(props);
+
+        this.toggle = this.toggle.bind(this);
+        this.changeValue = this.changeValue.bind(this);
+        this.state = {
+            dropdownOpen: false,
+            dropDownValue: 'Select a category'
+        };
+    }
 
     state = {
         title: "",
         price: null,
-        category: "",
         description: "",
         link: false,
         titleError: false,
@@ -18,10 +29,8 @@ class CreateListing extends React.Component {
 
     componentDidMount() {
         if (this.props.location.state) {
-            this.setState({name: this.props.location.state.formValues.title});
-            this.setState({email: this.props.location.state.formValues.price});
-            this.setState({password: this.props.location.state.formValues.category});
-            this.setState({rePassword: this.props.location.state.formValues.description})
+            this.setState({title: this.props.location.state.formValues.title});
+            this.setState({price: this.props.location.state.formValues.price});
         }
     }
 
@@ -34,7 +43,7 @@ class CreateListing extends React.Component {
 
     validate = (e) => {
         let isError = false;
-        const numericRegex = /^[0-9]*$/;
+        const priceRegex = /^\$?(?:(?:\d+(?:,\d+)?(?:\.\d+)?)|(?:\.\d+))$/;
         switch (e.target.name) {
             case 'title':
                 if (e.target.value.length === 0) {
@@ -42,7 +51,7 @@ class CreateListing extends React.Component {
                 }
                 break;
             case 'price':
-                if (e.target.value === null || !(numericRegex.test(e.target.value))) {
+                if (e.target.value === null || !(priceRegex.test(e.target.value))) {
                     isError = true;
                 }
                 break;
@@ -59,7 +68,7 @@ class CreateListing extends React.Component {
 
     validateFull = e => {
         if (
-            this.state.titleError || this.state.priceError || this.state.categoryError) {
+            this.state.titleError || this.state.priceError) {
             console.log('im invalid');
             this.setState({link: false});
         } else {
@@ -69,10 +78,23 @@ class CreateListing extends React.Component {
         console.log(this.state.status);
     };
 
+    toggle() {
+        this.setState(prevState => ({
+            dropdownOpen: !prevState.dropdownOpen
+        }));
+    }
+
+    changeValue(e) {
+        this.setState({dropDownValue: e.currentTarget.textContent})
+    }
+
     render() {
         let link;
         return (
-            <div className='paperContainer'>
+            <div>
+                <Navbar/>
+                <div className='paperContainer2'>
+
                 <div className='createListingModal'>
                     <h1 style={{fontFamily: "Lato", color: "#245CB3", textAlign: "center", marginBottom: "20%"}}>
                         Create Listing
@@ -80,35 +102,58 @@ class CreateListing extends React.Component {
 
                     <Form>
                         <FormGroup>
+                            <h4> * Title </h4>
                             <Input type='text' name='title' id='title' value={this.state.title} onChange={e=>this.change(e)}
-                                   placeholder="Name" invalid={this.state.titleError}/>
+                                    invalid={this.state.titleError}/>
                             <FormFeedback disabled={this.state.titleError}>Cannot be empty</FormFeedback>
                         </FormGroup>
 
                         <FormGroup>
-                            <Input type='price' name='price' id='price' value={this.state.email} onChange={e=>this.change(e)}
-                                   placeholder="Price" invalid={this.state.priceError}/>
-                            <FormFeedback disabled={this.state.priceError}>Must be a number</FormFeedback>
+                            <h4> * Price </h4>
+                            <Input type='price' name='price' id='price' value={this.state.price} onChange={e=>this.change(e)}
+                                   invalid={this.state.priceError}/>
+                            <FormFeedback disabled={this.state.priceError}>Must be a valid price</FormFeedback>
                         </FormGroup>
 
-                        {/*<FormGroup>*/}
-                        {/*    <Input type='password' name='password' id='password' value={this.state.password} onChange={e=>this.change(e)}*/}
-                        {/*           placeholder="Password" invalid={this.state.passwordError}/>*/}
-                        {/*    <FormFeedback disabled={this.state.passwordError}>Password must be at least 8 characters long</FormFeedback>*/}
-                        {/*</FormGroup>*/}
+                        <FormGroup>
+                            <h4> * Category </h4>
+                            <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
+                                <DropdownToggle caret>
+                                    {this.state.dropDownValue}
+                                </DropdownToggle>
+                                <DropdownMenu>
+                                    <DropdownItem>
+                                        <div onClick={this.changeValue}>Tutors</div>
+                                    </DropdownItem>
+                                    <DropdownItem>
+                                        <div onClick={this.changeValue}>Rides</div>
+                                    </DropdownItem>
+                                    <DropdownItem>
+                                        <div onClick={this.changeValue}>Party</div>
+                                    </DropdownItem>
+                                    <DropdownItem>
+                                        <div onClick={this.changeValue}>Design</div>
+                                    </DropdownItem>
+                                    <DropdownItem>
+                                        <div onClick={this.changeValue}>IT</div>
+                                    </DropdownItem>
+                                </DropdownMenu>
+                            </Dropdown>
+                        </FormGroup>
 
-                        {/*<FormGroup style={{marginBottom: "20%"}}>*/}
-                        {/*    <Input type='password' name='rePassword' id='rePassword' value={this.state.rePassword} onChange={e=>this.change(e)}*/}
-                        {/*           placeholder="Re-enter Password" invalid={this.state.rePasswordError}/>*/}
-                        {/*    <FormFeedback disabled={this.state.rePasswordError}>Passwords do not match</FormFeedback>*/}
-                        {/*</FormGroup>*/}
+                        <FormGroup>
+                            <h4> Description </h4>
+                            <Input type="textarea" name="text" id="exampleText" />
+                        </FormGroup>
 
-                        <Button style={{float: "left", position: "relative"}}
+
+                            <Button style={{float: "left", position: "relative"}}
                                 href="/" color="secondary" size="lg" className='landing-button'>Cancel</Button>
                         <Button style={{float: "right", position: "relative"}}
-                                href="/homepage" color="primary" size="lg" className='landing-button' disabled={this.state.link}>Sign Up</Button>
+                                href="/homepage" color="primary" size="lg" className='landing-button' disabled={this.state.link}>Submit</Button>
                     </Form>
                 </div>
+            </div>
             </div>
         );
     }

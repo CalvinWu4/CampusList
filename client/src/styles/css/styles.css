@@ -37,6 +37,18 @@
     flex-direction:column;
 }
 
+.paperContainer2 {
+    margin-top: 5%;
+    overflow: hidden;
+    height:100vh;
+    align-content:center;
+    align-items: center;
+    display: flex;
+    /*justify-content: center;*/
+    font-family:Lato;
+    flex-direction:column;
+}
+
 .registerModal {
     background: white;
     position: fixed;
