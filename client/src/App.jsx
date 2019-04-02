@@ -7,6 +7,8 @@ import Review from './components/Review';
 import HomePage from './components/HomePage';
 import SignUp from './components/SignUp';
 import SignIn from './components/SignIn';
+import CreateListing from './components/CreateListing';
+
 
 import {BrowserRouter, Route} from 'react-router-dom';
 class App extends Component {
@@ -22,6 +24,8 @@ class App extends Component {
             <Route path='/homepage' component = {HomePage}/>
             <Route path='/signup' component = {SignUp}/>
             <Route path='/signin' component = {SignIn}/>
+            <Route path='/createlisting' component = {CreateListing}/>
+
             </div>
         </BrowserRouter>
     );

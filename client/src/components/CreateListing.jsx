@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import { Button, Form, FormFeedback, FormGroup, Label, Input, FormText,Row, Col, Container} from 'reactstrap';
 import {Link, Redirect} from 'react-router-dom';
+import SignUp from "./SignUp";
 
-class SignUp extends React.Component {
+class CreateListing extends React.Component {
 
     state = {
         title: "",
@@ -34,10 +35,9 @@ class SignUp extends React.Component {
     validate = (e) => {
         let isError = false;
         const numericRegex = /^[0-9]*$/;
-        const alphabeticRegex = /^[a-zA-Z\s]*$/;
         switch (e.target.name) {
             case 'title':
-                if (e.target.value.length === 0 || !(alphabeticRegex.test(e.target.value))) {
+                if (e.target.value.length === 0) {
                     isError = true;
                 }
                 break;
@@ -68,4 +68,51 @@ class SignUp extends React.Component {
         }
         console.log(this.state.status);
     };
+
+    render() {
+        let link;
+        return (
+            <div className='paperContainer'>
+                <div className='createListingModal'>
+                    <h1 style={{fontFamily: "Lato", color: "#245CB3", textAlign: "center", marginBottom: "20%"}}>
+                        Create Listing
+                    </h1>
+
+                    <Form>
+                        <FormGroup>
+                            <Input type='text' name='title' id='title' value={this.state.title} onChange={e=>this.change(e)}
+                                   placeholder="Name" invalid={this.state.titleError}/>
+                            <FormFeedback disabled={this.state.titleError}>Cannot be empty</FormFeedback>
+                        </FormGroup>
+
+                        <FormGroup>
+                            <Input type='price' name='price' id='price' value={this.state.email} onChange={e=>this.change(e)}
+                                   placeholder="Price" invalid={this.state.priceError}/>
+                            <FormFeedback disabled={this.state.priceError}>Must be a number</FormFeedback>
+                        </FormGroup>
+
+                        {/*<FormGroup>*/}
+                        {/*    <Input type='password' name='password' id='password' value={this.state.password} onChange={e=>this.change(e)}*/}
+                        {/*           placeholder="Password" invalid={this.state.passwordError}/>*/}
+                        {/*    <FormFeedback disabled={this.state.passwordError}>Password must be at least 8 characters long</FormFeedback>*/}
+                        {/*</FormGroup>*/}
+
+                        {/*<FormGroup style={{marginBottom: "20%"}}>*/}
+                        {/*    <Input type='password' name='rePassword' id='rePassword' value={this.state.rePassword} onChange={e=>this.change(e)}*/}
+                        {/*           placeholder="Re-enter Password" invalid={this.state.rePasswordError}/>*/}
+                        {/*    <FormFeedback disabled={this.state.rePasswordError}>Passwords do not match</FormFeedback>*/}
+                        {/*</FormGroup>*/}
+
+                        <Button style={{float: "left", position: "relative"}}
+                                href="/" color="secondary" size="lg" className='landing-button'>Cancel</Button>
+                        <Button style={{float: "right", position: "relative"}}
+                                href="/homepage" color="primary" size="lg" className='landing-button' disabled={this.state.link}>Sign Up</Button>
+                    </Form>
+                </div>
+            </div>
+        );
+    }
 }
+
+export default CreateListing;
+
