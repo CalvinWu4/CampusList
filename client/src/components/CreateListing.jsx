@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { Button, Form, FormFeedback, FormGroup, Label, Input, FormText,Row, Col, Container, Dropdown, DropdownItem, DropdownToggle, DropdownMenu} from 'reactstrap';
 import {Link, Redirect} from 'react-router-dom';
+import NumberFormat from 'react-number-format';
 import Navbar from './NavigationBar';
 import SideNav from "./SideNavigation";
 
@@ -19,12 +20,11 @@ class CreateListing extends React.Component {
 
     state = {
         title: "",
-        price: null,
+        price: "",
         description: "",
         link: false,
         titleError: false,
         priceError: false,
-        categoryError: false,
     }
 
     componentDidMount() {
@@ -51,7 +51,12 @@ class CreateListing extends React.Component {
                 }
                 break;
             case 'price':
-                if (e.target.value === null || !(priceRegex.test(e.target.value))) {
+                if (e.target.value.length === 0 || !(priceRegex.test(e.target.value))) {
+                    isError = true;
+                }
+                break;
+            case 'dropdown':
+                if (e.target.value === 'Select a category') {
                     isError = true;
                 }
                 break;
@@ -68,7 +73,7 @@ class CreateListing extends React.Component {
 
     validateFull = e => {
         if (
-            this.state.titleError || this.state.priceError) {
+            this.state.titleError || this.state.priceError || this.state.dropDownValue === 'Select a category') {
             console.log('im invalid');
             this.setState({link: false});
         } else {
@@ -111,7 +116,7 @@ class CreateListing extends React.Component {
                         <FormGroup>
                             <h4> * Price </h4>
                             <Input type='price' name='price' id='price' value={this.state.price} onChange={e=>this.change(e)}
-                                   invalid={this.state.priceError}/>
+                                   invalid={this.state.priceError} />
                             <FormFeedback disabled={this.state.priceError}>Must be a valid price</FormFeedback>
                         </FormGroup>
 
@@ -143,14 +148,14 @@ class CreateListing extends React.Component {
 
                         <FormGroup>
                             <h4> Description </h4>
-                            <Input type="textarea" name="text" id="exampleText" />
+                            <Input type="textarea" name="description" id="description" value={this.state.description}
+                                   onChange={e=>this.change(e)} />
                         </FormGroup>
-
 
                             <Button style={{float: "left", position: "relative"}}
                                 href="/" color="secondary" size="lg" className='landing-button'>Cancel</Button>
                         <Button style={{float: "right", position: "relative"}}
-                                href="/homepage" color="primary" size="lg" className='landing-button' disabled={this.state.link}>Submit</Button>
+                                href="/homepage" color="primary" size="lg" className='landing-button' disabled={!this.state.link}>Submit</Button>
                     </Form>
                 </div>
             </div>
