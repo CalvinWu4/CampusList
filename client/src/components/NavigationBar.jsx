@@ -46,11 +46,14 @@ export default class NavigationBar extends React.Component {
             <div>
                 <Navbar className='navBar' light expand="md">
                     <img className='navBarLogo' src={require('../styles/images/rit-logo.png')}></img>
-                    <NavbarBrand className='navBarText navBarHeader' href="/">CampusList</NavbarBrand>
+                    <NavbarBrand className='navBarText navBarHeader' href="/homepage">CampusList</NavbarBrand>
                     <NavbarToggler onClick={this.toggle} />
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="ml-auto" navbar>
-                             <NavItem>
+                            <NavItem>
+                                <NavLink className='navBarText' href="/createlisting">Create a Listing</NavLink>
+                            </NavItem>
+                            <NavItem>
                                 <NavLink className='navBarText' href="/components/">My Appointments</NavLink>
                             </NavItem>
                             <NavItem>
