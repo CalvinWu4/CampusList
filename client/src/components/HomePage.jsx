@@ -1,4 +1,5 @@
 import React from 'react';
+import StarRatings from 'react-star-ratings';
 import {
     Button,
     Col,
@@ -95,7 +96,6 @@ class HomePage extends React.Component {
             }
 
         }
-        console.log(typeof (pic));
         return(
             <Link to={{ pathname: '/service', state:listings }} style={{borderColor:'black !important'}}>
             <div className='listing'style={this.style.listing}  >
@@ -104,9 +104,18 @@ class HomePage extends React.Component {
                     <p style={{fontFamily: "Lato", fontSize:"20px", color:'white'}}>{listings['title']}</p>
                 </div>
                 <div className='listingText' style={this.style.listingText}>
-                    <p style={{fontFamily: "Lato", fontSize:"20px", color:'white'}}>{listings['text']}</p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua.
+                    <div style={{display:'block', clear:'both'}}>
+                    {listings['description']}
+                    </div>
+                    <div style={{  position:'absolute', marginLeft:'auto', marginRight:'auto', bottom:5, left:22}}>
+                    <StarRatings starDimension="30px"
+                        rating={parseInt(listings['rating'])}
+                        starRatedColor="blue"
+                        numberOfStars={5}
+                        name='rating'
+                    />
+                    </div>
+
                 </div>
             </div>
             </Link>
