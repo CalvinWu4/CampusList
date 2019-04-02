@@ -8,6 +8,7 @@ import HomePage from './components/HomePage';
 import SignUp from './components/SignUp';
 import SignIn from './components/SignIn';
 import CreateListing from './components/CreateListing';
+import Services from './components/Services';
 
 
 import {BrowserRouter, Route} from 'react-router-dom';
@@ -25,6 +26,7 @@ class App extends Component {
             <Route path='/signup' component = {SignUp}/>
             <Route path='/signin' component = {SignIn}/>
             <Route path='/createlisting' component = {CreateListing}/>
+            <Route path='/services' component = {Services}/>
 
             </div>
         </BrowserRouter>

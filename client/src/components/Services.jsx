@@ -15,22 +15,26 @@ import {
 } from 'reactstrap';
 import {Link} from 'react-router-dom';
 import ReactDOM from 'react-dom';
-import SideNav from './SideNavigation';
 import Navbar from './NavigationBar';
 
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPlusCircle } from '@fortawesome/free-solid-svg-icons'
 
-class HomePage extends React.Component {
+library.add( faPlusCircle);
+
+
+class Services extends React.Component {
 
     style={
-      image: {
-          width: '247px',
-          height: '147px',
-          borderRadius: '30px',
-          zIndex: -1,
-          position: 'absolute',
-}
-      ,
+        image: {
+            width: '247px',
+            height: '147px',
+            borderRadius: '30px',
+            zIndex: -1,
+            position: 'relative',
+        }
+        ,
         listing: {
             width: '250px',
             height: '150px',
@@ -71,14 +75,14 @@ class HomePage extends React.Component {
 
     };
     state={
-      services:{},
-      service_ids:[],
+        services:{},
+        service_ids:[],
     };
     componentWillMount() {
         var data = require('../Data/sample.json'); // forward slashes will depend on the file location
         this.setState({services: data.listings});
         for(var i = 0; i < data.listings.length; i++) {
-           this.state.service_ids.push(data.listings[i].id);
+            this.state.service_ids.push(data.listings[i].id);
         }
     }
 
@@ -98,48 +102,38 @@ class HomePage extends React.Component {
         }
         return(
             <Link to={{ pathname: '/service', state:listings }} style={{borderColor:'black !important'}}>
-            <div className='listing'style={this.style.listing}  >
-                <img style={this.style.image} src={require("../styles/images/"+listings['picture'] )}/>
-                <div className='listingTitle' style={this.style.listingTitle}>
-                    <p style={{fontFamily: "Lato", fontSize:"20px", color:'white'}}>{listings['title']}</p>
-                </div>
-                <div className='listingText' style={this.style.listingText}>
-                    <div style={{display:'block', clear:'both'}}>
-                    {listings['description']}
+                <div className='listing'style={this.style.listing}  >
+                    <img style={this.style.image} src={require("../styles/images/"+listings['picture'] )}/>
+                    <div className='listingTitle' style={this.style.listingTitle}>
+                        <p style={{fontFamily: "Lato", fontSize:"20px", color:'white'}}>{listings['title']}</p>
                     </div>
-                    <div style={{  position:'absolute', marginLeft:'auto', marginRight:'auto', bottom:5, left:22}}>
-                    <StarRatings starDimension="30px"
-                        rating={parseFloat(listings['rating'])}
-                        starRatedColor="blue"
-                        numberOfStars={5}
-                        name='rating'
-                    />
-                    </div>
+                    <div className='listingText' style={this.style.listingText}>
+                        <div style={{display:'block', clear:'both'}}>
+                            {listings['description']}
+                        </div>
+                        <div style={{  position:'absolute', marginLeft:'auto', marginRight:'auto', bottom:5, left:22}}>
+                            <StarRatings starDimension="30px"
+                                         rating={parseFloat(listings['rating'])}
+                                         starRatedColor="blue"
+                                         numberOfStars={5}
+                                         name='rating'
+                            />
+                        </div>
 
+                    </div>
                 </div>
-            </div>
             </Link>
         )
     }
     render() {
         return (
             <div>
-            <Navbar/>
-            <SideNav/>
-                <Container style={{marginTop: 20}}>
-
-                    <Row form >
-                        <Col md={12}>
-                            <FormGroup>
-                                <Input type='text' name='Search' id='Search' placeholder='Search for service'  />
-                            </FormGroup>
-
-                        </Col>
-
-                    </Row>
+                <Navbar/>
+                <Container style={{marginTop: 45, marginBottom: 30, paddingLeft:0}}>
+                <h2>My Services</h2>
 
                 </Container>
-                <Container style={{maxHeight:'70vh', overflow:'auto' , border:'solid', borderColor:'grey'}}>
+                <Container style={{maxHeight:'65vh', overflow:'auto' , border:'solid',borderColor:'grey'}}>
                     <div style={{display:'inline-block'}}>
                         {this.state.service_ids.map((row,i) => (
                             <div style={{display:'inline-block', marginRight:'45px'}}>
@@ -148,9 +142,12 @@ class HomePage extends React.Component {
                         ))}
                     </div>
                 </Container>
+                <Container style={{paddingLeft:0, marginTop:10}}>
+                    <Button href='/createlisting' color="success" style={{ borderRadius:100,width:'40px', height:'40px', padding:0}}><FontAwesomeIcon icon="plus-circle" style={{width:'35px', height:'37px'}}/></Button>{' '}
+                </Container>
             </div>
         )}
 
 }
 
-export default HomePage;
+export default Services;
