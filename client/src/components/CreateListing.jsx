@@ -152,7 +152,7 @@ class CreateListing extends React.Component {
                         </FormGroup>
 
                             <Button style={{float: "left", position: "relative"}}
-                                href="/" color="secondary" size="lg" className='landing-button'>Cancel</Button>
+                                href="/homepage" color="secondary" size="lg" className='landing-button'>Cancel</Button>
                         <Button style={{float: "right", position: "relative"}}
                                 href="/homepage" color="primary" size="lg" className='landing-button' disabled={!this.state.link}>Submit</Button>
                     </Form>
