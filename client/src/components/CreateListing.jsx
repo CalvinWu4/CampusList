@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import { Button, Form, FormFeedback, FormGroup, Label, Input, FormText,Row, Col, Container, Dropdown, DropdownItem, DropdownToggle, DropdownMenu} from 'reactstrap';
 import {Link, Redirect} from 'react-router-dom';
-import NumberFormat from 'react-number-format';
 import Navbar from './NavigationBar';
 import SideNav from "./SideNavigation";
 
