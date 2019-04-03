@@ -2,9 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons'
+import { faFlag } from '@fortawesome/free-solid-svg-icons'
 
-library.add( faExclamationTriangle );
+library.add( faFlag );
 
 export default class AppointmentEvent extends React.Component {
 
@@ -12,7 +12,7 @@ export default class AppointmentEvent extends React.Component {
 	return (
 	    <div style={{ display: 'inline' }}>
 	    	<span style={{ marginRight: '1em' }}>{this.props.event.title}</span>
-	    	<FontAwesomeIcon className='appointmentEventButton' icon="exclamation-triangle" />
+	    	<FontAwesomeIcon className='appointmentEventButton' icon="flag" />
 	    </div>
 	)
     }
