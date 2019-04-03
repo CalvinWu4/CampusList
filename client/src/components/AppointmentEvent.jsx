@@ -12,7 +12,7 @@ export default class AppointmentEvent extends React.Component {
 	return (
 	    <div style={{ display: 'inline' }}>
 	    	<span style={{ marginRight: '1em' }}>{this.props.event.title}</span>
-	    	<FontAwesomeIcon icon="exclamation-triangle" />
+	    	<FontAwesomeIcon className='appointmentEventButton' icon="exclamation-triangle" />
 	    </div>
 	)
     }
