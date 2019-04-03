@@ -11,6 +11,7 @@ class CreateListing extends React.Component {
 
         this.toggle = this.toggle.bind(this);
         this.changeValue = this.changeValue.bind(this);
+	this.submit = this.submit.bind(this);
         this.state = {
             dropdownOpen: false,
             dropDownValue: 'Select a category'
@@ -92,6 +93,10 @@ class CreateListing extends React.Component {
         this.setState({dropDownValue: e.currentTarget.textContent})
     }
 
+    submit() {
+	window.location.href = "/services";
+    }
+
     render() {
         let link;
         return (
@@ -152,9 +157,9 @@ class CreateListing extends React.Component {
                         </FormGroup>
 
                             <Button style={{float: "left", position: "relative"}}
-                                href="/homepage" color="secondary" size="lg" className='landing-button'>Cancel</Button>
+                                href="/services" color="secondary" size="lg" className='landing-button'>Cancel</Button>
                         <Button style={{float: "right", position: "relative"}}
-                                href="/homepage" color="primary" size="lg" className='landing-button' disabled={!this.state.link}>Submit</Button>
+                                onClick={this.submit} color="primary" size="lg" className='landing-button' disabled={!this.state.link}>Submit</Button>
                     </Form>
                 </div>
             </div>
