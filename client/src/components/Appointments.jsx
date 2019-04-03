@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Navbar from './NavigationBar';
+import AppointmentEvent from './AppointmentEvent';
 
 import moment from 'moment';
 import BigCalendar from 'react-big-calendar';
@@ -50,6 +51,7 @@ export default class Appointments extends React.Component {
 	    	    defaultView="month"
 	    	    views={["month"]}
 	    	    style={{ height: "80vh" }}
+	    	    components={{ event: AppointmentEvent }}
 	    	/>
 	    </div>
         )
