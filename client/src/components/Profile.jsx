@@ -75,8 +75,6 @@ class Profile extends React.Component {
                         <textarea style={{position: "relative", right: "0%", height: "75%", width: "50%", marginLeft: "25%", marginRight: "25%", resize: "none"}} rows="3" cols="150" display="auto">
                             I'm a Software Engineer here at RIT. I'm usually in Golisano and I love participating in competitive events.
                         </textarea>
-                        <Button style={{bottom: 0, right: 140, position: "absolute", marginRight: "25%", display: "inline-block"}} href="/" color="secondary" size="lg" className='landing-button'>Cancel</Button>
-                        <Button style={{bottom: 0, right: 0, position: "absolute", marginRight: "25%"}} href="/" color="primary" size="lg" className='landing-button'>Save</Button>
                     </div>
                 </div>
 
