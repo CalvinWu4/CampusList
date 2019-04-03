@@ -4,6 +4,7 @@ import classnames from 'classnames';
 import Navbar from './NavigationBar';
 import StarRatings from 'react-star-ratings';
 
+
 export default class Example extends React.Component {
   constructor(props) {
     super(props);
