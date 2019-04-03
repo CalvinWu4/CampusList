@@ -1,7 +1,7 @@
 {
 	"listings": [{
 			"id": 0,
-			"category": ["tutoring"],
+			"category": ["Tutoring"],
 			"picture": "Physics-Tutoring.jpg",
 			"creator": "",
 			"title": "Physics I Tutoring",
@@ -14,14 +14,18 @@
 				},
 				{
 					"rating": "3",
-					"review": "He was fine but he couldn't explain how to use some of the equations that I had trouble with."
+					"review": "He was fine but he couldn't use some of the equations that I had trouble with."
+				},
+				{
+					"rating": "4",
+					"review": "Great guy, abit late to the session"
 				}
 			],
 			"appointments": []
 		},
 		{
 			"id": 1,
-			"category": ["rides"],
+			"category": ["Rides"],
 			"picture": "Wegmans-Trip.JPG",
 			"creator": "",
 			"title": "Wegmans Trip",
@@ -41,7 +45,7 @@
 		},
 		{
 			"id": 2,
-			"category": ["party", "rides"],
+			"category": ["Party"],
 			"picture": "Designated-Driver.jpg",
 			"creator": "",
 			"title": "Designated driver",
@@ -61,7 +65,7 @@
 		},
 		{
 			"id": 3,
-			"category": ["design"],
+			"category": ["Design"],
 			"picture": "Poster-Design.png",
 			"creator": "",
 			"title": "Freelance Poster Design",
@@ -81,7 +85,7 @@
 		},
 		{
 			"id": 4,
-			"category": ["it"],
+			"category": ["IT"],
 			"picture": "Computer-Repair.jpg",
 			"creator": "",
 			"title": "Computer Repair",
@@ -101,7 +105,7 @@
 		},
 		{
 			"id": 5,
-			"category": ["design"],
+			"category": ["Design"],
 			"picture": "LinkedIn-Headshots.jpg",
 			"creator": "",
 			"title": "LinkedIn Headshots",
@@ -121,7 +125,7 @@
 		},
 		{
 			"id": 6,
-			"category": ["tutoring"],
+			"category": ["Tutoring"],
 			"picture": "Calculus-Help.png",
 			"creator": "",
 			"title": "Calculus Help",
@@ -141,7 +145,7 @@
 		},
 		{
 			"id": 7,
-			"category": ["tutoring"],
+			"category": ["Tutoring"],
 			"picture": "CS-Tutoring.jpg",
 			"creator": "",
 			"title": "CSCI 141 Tutor",
@@ -161,7 +165,7 @@
 		},
 		{
 			"id": 8,
-			"category": ["tutoring"],
+			"category": ["Tutoring"],
 			"picture": "Essay-Review.jpg",
 			"creator": "",
 			"title": "Essay Review",
@@ -183,7 +187,7 @@
 		},
 		{
 			"id": 9,
-			"category": ["party", "design"],
+			"category": ["Party"],
 			"picture": "Party-Promotion.jpg",
 			"creator": "",
 			"title": "Party Promotion",

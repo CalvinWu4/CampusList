@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import Home from './components/Home'
 import Register from './components/Register';
 import Login from './components/Login';
-import Review from './components/Review';
+import Service from './components/Service';
 import HomePage from './components/HomePage';
 import SignUp from './components/SignUp';
 import CreateListing from './components/CreateListing';
@@ -21,7 +21,7 @@ class App extends Component {
             <Route path ='/' component={Home} exact/>
             <Route path ='/login' component={Login}/>
             <Route path='/register'  component={Register}/>
-            <Route path='/review' component = {Review}/>
+            <Route path='/service' component = {Service}/>
             <Route path='/homepage' component = {HomePage}/>
             <Route path='/signup' component = {SignUp}/>
             <Route path='/createlisting' component = {CreateListing}/>

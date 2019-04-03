@@ -10,6 +10,11 @@
     padding-right: 25px;
 }
 
+#root > div > div > ul > li> .active {
+    background-color: #245CB3;
+    color:white;
+    border-color:black !important;
+}
 .login {
     margin-left:15px;
     padding-left: 25px;
@@ -97,6 +102,12 @@ input {
 .listing:hover .listingText {
     visibility: visible;
 }
+
+.nav-tabs .nav-link, .nav-tabs .nav-item.show .nav-link{
+    color: white;
+}
+
+
 .profilePicture {
     border-radius: 50%;
     display: block;
