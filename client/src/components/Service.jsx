@@ -2,6 +2,7 @@ import React from 'react';
 import { Form, FormGroup, Label, Input, FormText, TabContent, TabPane, Nav, NavItem, NavLink, Card, Button, CardTitle, CardText, Row, Col } from 'reactstrap';
 import classnames from 'classnames';
 import Navbar from './NavigationBar';
+import StarRatings from 'react-star-ratings';
 
 export default class Example extends React.Component {
   constructor(props) {
@@ -43,7 +44,12 @@ export default class Example extends React.Component {
             <div>
                 <h3 style={{color:'gray'}}>{this.state.listing['category']}</h3>
                 <h1>{this.state.listing['title']}</h1>
-                <h3>{this.state.listing['rating']}</h3>
+                <StarRatings starDimension="30px"
+                        rating={parseFloat(this.state.listing['rating'])}
+                        starRatedColor="blue"
+                        numberOfStars={5}
+                        name='rating'
+                />
                 <h3>{this.state.listing['price']}</h3>
             </div>
         </div>
@@ -86,8 +92,13 @@ export default class Example extends React.Component {
                 {this.state.listing.ratings.map((x) => {
                      return (
                     <div style={{margin: '2%'}}>
-                        <p>{x.rating}</p>
-                        <p>{x.review}</p>
+                        <StarRatings starDimension="30px"
+                            rating={parseFloat(x.rating)}
+                            starRatedColor="blue"
+                            numberOfStars={5}
+                            name='rating'
+                        />
+                        <p style={{marginTop: '2%'}}>{x.review}</p>
                         <hr />
                     </div>)
                 })}
@@ -116,7 +127,7 @@ export default class Example extends React.Component {
                           />
                         </FormGroup>
                     </Row>
-                    <Button style={{display: 'block', margin:'0 auto', color: 'white', backgroundColor: '#245CB3'}}>Book Appointment</Button>
+                    <Button style={{display: 'block', margin:'0 auto', color: 'white', backgroundColor: '#245CB3'}} href="/appointments">Book Appointment</Button>
                 </Form>
               {/*</Col>*/}
             </Row>
