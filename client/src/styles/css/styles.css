@@ -10,6 +10,11 @@
     padding-right: 25px;
 }
 
+#root > div > div > ul > li> .active {
+    background-color: #245CB3;
+    color:white;
+    border-color:black !important;
+}
 .login {
     margin-left:15px;
     padding-left: 25px;
@@ -102,9 +107,8 @@ input {
     color: white;
 }
 
-.row{
-    justify-content: center;
-}.profilePicture {
+
+.profilePicture {
     border-radius: 50%;
     display: block;
     margin: auto;

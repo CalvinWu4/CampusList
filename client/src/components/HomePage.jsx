@@ -109,7 +109,7 @@ class HomePage extends React.Component {
                     <div style={{  position:'absolute', marginLeft:'auto', marginRight:'auto', bottom:5, left:22}}>
                     <StarRatings starDimension="30px"
                         rating={parseFloat(listings['rating'])}
-                        starRatedColor="blue"
+                        starRatedColor="#245CB3"
                         numberOfStars={5}
                         name='rating'
                     />
