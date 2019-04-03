@@ -99,10 +99,12 @@ input {
 }
 .profilePicture {
     border-radius: 50%;
+    display: block;
+    margin: auto;
     border-style: solid;
     border-color: black;
-    width: 15%;
-    height: 15%;
+    width: 12%;
+    height: 12%;
 }
 
 .profileName {
@@ -113,7 +115,9 @@ input {
 
 .profileStatus {
     font-family: Lato;
-    text-align: center;
+    display: inline-block;
+    width: 10%;
+    height: 30px;
 }
 
 .profileDesription {

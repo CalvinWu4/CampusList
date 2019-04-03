@@ -6,7 +6,6 @@ import Login from './components/Login';
 import Review from './components/Review';
 import HomePage from './components/HomePage';
 import SignUp from './components/SignUp';
-import SignIn from './components/SignIn';
 import CreateListing from './components/CreateListing';
 import Profile from './components/Profile';
 
