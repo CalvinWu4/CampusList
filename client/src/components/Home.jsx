@@ -11,7 +11,7 @@ class Home extends React.Component {
                     <h1 className='homeHeader'>CAMPUSLIST</h1>
                     <div style={{display:'inline', marginTop:'20px'}}>
                     <Button href="/signup" color="secondary" size="lg" className='landing-button'>Sign Up</Button>
-                    <Button href="/signin" color="primary" size="lg" className='landing-button'>Login</Button>
+                    <Button href="/login" color="primary" size="lg" className='landing-button'>Login</Button>
                     </div>
                 </div>
             </div>
