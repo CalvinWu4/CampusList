@@ -6,10 +6,10 @@ import Login from './components/Login';
 import Review from './components/Review';
 import HomePage from './components/HomePage';
 import SignUp from './components/SignUp';
-import SignIn from './components/SignIn';
 import CreateListing from './components/CreateListing';
 import Services from './components/Services';
-
+import Profile from './components/Profile';
+import Appointments from './components/Appointments'
 
 import {BrowserRouter, Route} from 'react-router-dom';
 class App extends Component {
@@ -24,10 +24,10 @@ class App extends Component {
             <Route path='/review' component = {Review}/>
             <Route path='/homepage' component = {HomePage}/>
             <Route path='/signup' component = {SignUp}/>
-            <Route path='/signin' component = {SignIn}/>
             <Route path='/createlisting' component = {CreateListing}/>
             <Route path='/services' component = {Services}/>
-
+            <Route path='/profile' component = {Profile}/>
+	          <Route path='/appointments' component = {Appointments}/>
             </div>
         </BrowserRouter>
     );

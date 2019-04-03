@@ -2,7 +2,7 @@
 
 
 
-.landing-button{
+.landing-button {
     margin-right: 15px;
     width: 125px;
     line-height: 20px;
@@ -10,14 +10,14 @@
     padding-right: 25px;
 }
 
-.login{
+.login {
     margin-left:15px;
     padding-left: 25px;
     line-height: 20px;
     padding-right: 25px;
 }
 
-.homeHeader{
+.homeHeader {
     font-family: "Oswald";
     font-size:70px;
     color:white;
@@ -96,4 +96,31 @@ input {
 
 .listing:hover .listingText {
     visibility: visible;
+}
+.profilePicture {
+    border-radius: 50%;
+    display: block;
+    margin: auto;
+    border-style: solid;
+    border-color: black;
+    width: 12%;
+    height: 12%;
+}
+
+.profileName {
+    font-family: Oswald;
+    text-align: center;
+    font-size: 300%;
+}
+
+.profileStatus {
+    font-family: Lato;
+    display: inline-block;
+    width: 10%;
+    height: 30px;
+}
+
+.profileDesription {
+    font-family: Lato;
+    text-align: center;
 }
