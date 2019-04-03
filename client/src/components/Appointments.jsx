@@ -6,7 +6,9 @@ export default class Appointments extends React.Component {
 
     render() {
 	return (
-	    <div><b>Appointments</b></div>
+	    <div>
+	        <Navbar/>
+	    </div>
     )}
 
 }
