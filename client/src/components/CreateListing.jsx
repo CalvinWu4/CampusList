@@ -72,7 +72,7 @@ class CreateListing extends React.Component {
 
     validateFull = e => {
         if (
-            this.state.titleError || this.state.priceError || this.state.dropDownValue === 'Select a category') {
+            this.state.titleError || this.state.priceError) {
             console.log('im invalid');
             this.setState({link: false});
         } else {
