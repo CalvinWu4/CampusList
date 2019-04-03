@@ -97,7 +97,14 @@ input {
 .listing:hover .listingText {
     visibility: visible;
 }
-.profilePicture {
+
+.nav-tabs .nav-link, .nav-tabs .nav-item.show .nav-link{
+    color: white;
+}
+
+.row{
+    justify-content: center;
+}.profilePicture {
     border-radius: 50%;
     display: block;
     margin: auto;

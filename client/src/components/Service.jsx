@@ -1,5 +1,5 @@
 import React from 'react';
-import { TabContent, TabPane, Nav, NavItem, NavLink, Card, Button, CardTitle, CardText, Row, Col } from 'reactstrap';
+import { Form, FormGroup, Label, Input, FormText, TabContent, TabPane, Nav, NavItem, NavLink, Card, Button, CardTitle, CardText, Row, Col } from 'reactstrap';
 import classnames from 'classnames';
 import Navbar from './NavigationBar';
 
@@ -10,14 +10,20 @@ export default class Example extends React.Component {
     this.toggle = this.toggle.bind(this);
     this.state = {
       activeTab: '1',
-      listing:""
+      // check the type of your default values set 
+      listing: {
+        ratings: []
+      }
     };
   }
 
 
-    componentDidMount() {
+    /// Checkout liefcycle methods to find besttime to set listing (before render)
+    componentWillMount() {
         if (this.props.location.state) {
-            this.setState({listing:this.props.location.state});
+            // re-write Listing to whatever location.state
+            // Proptypes to enforce typing
+            this.setState({listing:this.props.location.state})
         }
     }
 
@@ -32,18 +38,20 @@ export default class Example extends React.Component {
     return (
       <div>
         <Navbar />
-        <div style={{display:'flex', flexPosition:'row'}}>
-            <img src={require("../styles/images/"+this.state.listing['picture'])}/>
-            <p>{this.state.listing['category']}</p>
-            <p>{this.state.listing['title']}</p>
-            <p>{this.state.listing['price']}</p>
-            <p>{this.state.listing['rating']}</p>
+        <div style={{display:'flex', flexPosition:'row', width:'50%', marginTop:'7%', marginRight:'auto', marginLeft:'auto'}}>
+        <img src={require('../styles/images/'+this.state.listing['picture'])} style={{height:'15em', width:'15em', marginBottom: '2em', marginRight: '5em', border:'solid'}}/>
+            <div>
+                <h3 style={{color:'gray'}}>{this.state.listing['category']}</h3>
+                <h1>{this.state.listing['title']}</h1>
+                <h3>{this.state.listing['rating']}</h3>
+                <h3>{this.state.listing['price']}</h3>
+            </div>
         </div>
         <Nav tabs style={{width:'50%', marginRight:'auto', marginLeft:'auto'}}>
           <NavItem>
             <NavLink
               className={classnames({ active: this.state.activeTab === '1' })}
-              onClick={() => { this.toggle('1'); }}
+              onClick={() => { this.toggle('1'); }} style={{border:'solid'}}
             >
               Description
             </NavLink>
@@ -51,7 +59,7 @@ export default class Example extends React.Component {
           <NavItem>
             <NavLink
               className={classnames({ active: this.state.activeTab === '2' })}
-              onClick={() => { this.toggle('2'); }}
+              onClick={() => { this.toggle('2'); }} style={{border:'solid'}}
             >
               Reviews
             </NavLink>
@@ -59,7 +67,7 @@ export default class Example extends React.Component {
            <NavItem>
             <NavLink
               className={classnames({ active: this.state.activeTab === '3' })}
-              onClick={() => { this.toggle('3'); }}
+              onClick={() => { this.toggle('3')}} style={{border:'solid'}}
             >
               Appointments
             </NavLink>
@@ -68,27 +76,53 @@ export default class Example extends React.Component {
         <TabContent activeTab={this.state.activeTab} style={{width:'50%', height:'300px', marginRight:'auto', marginLeft:'auto', border:'solid'}}>
           <TabPane tabId="1">
             <Row>
-              <Col sm="12">
-                <p>{this.state.listing['description']}</p>
-              </Col>
+                <p style={{margin:'2%', width: '65%'}}>{this.state.listing['description']}</p>
+                <img style={{height:'15em', width:'15em', margin:'2.75%'}} src={require("../styles/images/map.png")}/>
             </Row>
           </TabPane>
            <TabPane tabId="2">
             <Row>
               <Col sm="12">
-                <h4>Tab 2 Contents</h4>
+                {this.state.listing.ratings.map((x) => {
+                     return (
+                    <div style={{margin: '2%'}}>
+                        <p>{x.rating}</p>
+                        <p>{x.review}</p>
+                        <hr />
+                    </div>)
+                })}
               </Col>
             </Row>
           </TabPane>
            <TabPane tabId="3">
             <Row>
-              <Col sm="12">
-                <h4>Tab 3 Contents</h4>
-              </Col>
+              {/*<Col sm="12">*/}
+                <Form>
+                    <Row>
+                        <FormGroup style={{marginTop: '4em', marginBottom: '4em', marginRight:'auto', marginLeft:'auto'}}>
+                          <Input
+                            type="date"
+                            name="date"
+                            id="exampleDate"
+                            placeholder="date placeholder"
+                          />
+                        </FormGroup>
+                        <FormGroup style={{marginTop: '4em', marginBottom: '4em', marginRight:'4em', marginLeft:'4em'}}>
+                          <Input
+                            type="time"
+                            name="time"
+                            id="exampleTime"
+                            placeholder="time placeholder"
+                          />
+                        </FormGroup>
+                    </Row>
+                    <Button style={{display: 'block', margin:'0 auto', color: 'white', backgroundColor: '#245CB3'}}>Book Appointment</Button>
+                </Form>
+              {/*</Col>*/}
             </Row>
           </TabPane>
         </TabContent>
       </div>
     );
   }
-}
+};
