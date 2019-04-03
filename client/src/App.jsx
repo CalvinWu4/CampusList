@@ -8,6 +8,7 @@ import HomePage from './components/HomePage';
 import SignUp from './components/SignUp';
 import CreateListing from './components/CreateListing';
 import Profile from './components/Profile';
+import Appointments from './components/Appointments'
 
 import {BrowserRouter, Route} from 'react-router-dom';
 class App extends Component {
@@ -23,8 +24,8 @@ class App extends Component {
             <Route path='/homepage' component = {HomePage}/>
             <Route path='/signup' component = {SignUp}/>
             <Route path='/createlisting' component = {CreateListing}/>
-            <Route path='/login' component = {Login}/>
             <Route path='/profile' component = {Profile}/>
+	          <Route path='/appointments' component = {Appointments}/>
             </div>
         </BrowserRouter>
     );
