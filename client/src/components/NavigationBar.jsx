@@ -57,7 +57,7 @@ export default class NavigationBar extends React.Component {
                                 <NavLink className='navBarText' href="/components/">My Services</NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink className='navBarText' href="/components/">Profile</NavLink>
+                                <NavLink className='navBarText' href="/profile">Profile</NavLink>
                             </NavItem>
                             <NavItem>
                                 <NavLink className='navBarText' href="/">Sign Out</NavLink>

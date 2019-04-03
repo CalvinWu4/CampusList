@@ -22,14 +22,13 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 class HomePage extends React.Component {
 
     style={
-      image: {
+        image: {
           width: '247px',
           height: '147px',
           borderRadius: '30px',
           zIndex: -1,
           position: 'absolute',
-}
-      ,
+        },
         listing: {
             width: '250px',
             height: '150px',

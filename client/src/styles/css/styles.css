@@ -2,7 +2,7 @@
 
 
 
-.landing-button{
+.landing-button {
     margin-right: 15px;
     width: 125px;
     line-height: 20px;
@@ -10,14 +10,14 @@
     padding-right: 25px;
 }
 
-.login{
+.login {
     margin-left:15px;
     padding-left: 25px;
     line-height: 20px;
     padding-right: 25px;
 }
 
-.homeHeader{
+.homeHeader {
     font-family: "Oswald";
     font-size:70px;
     color:white;
@@ -69,4 +69,28 @@ input {
     width: 5%;
     height: 5%;
     padding-right: 2%;
+}
+
+.profilePicture {
+    border-radius: 50%;
+    border-style: solid;
+    border-color: black;
+    width: 15%;
+    height: 15%;
+}
+
+.profileName {
+    font-family: Oswald;
+    text-align: center;
+    font-size: 300%;
+}
+
+.profileStatus {
+    font-family: Lato;
+    text-align: center;
+}
+
+.profileDesription {
+    font-family: Lato;
+    text-align: center;
 }
