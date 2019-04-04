@@ -88,7 +88,7 @@ class Profile extends React.Component {
                         </div>
                     </Link>
 
-                    <Link to={{ pathname: '/myservices'}} style={{position: "absolute", bottom: "2%", left: "33%"}}>
+                    <Link to={{ pathname: '/services'}} style={{position: "absolute", bottom: "2%", left: "33%"}}>
                         <div style={this.style.listing}  >
                             <img style={this.style.image} src={require("../styles/images/service.jpg")}/>
                             <div className='listingTitle' style={this.style.listingTitle}>
