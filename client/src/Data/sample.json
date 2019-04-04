@@ -14,7 +14,11 @@
 				},
 				{
 					"rating": "3",
-					"review": "He was fine but he couldn't explain how to use some of the equations that I had trouble with."
+					"review": "He was fine but he couldn't use some of the equations that I had trouble with."
+				},
+				{
+					"rating": "4",
+					"review": "Great guy, abit late to the session"
 				}
 			],
 			"appointments": []
