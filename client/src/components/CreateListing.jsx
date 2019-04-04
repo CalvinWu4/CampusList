@@ -94,6 +94,32 @@ class CreateListing extends React.Component {
     }
 
     submit() {
+	var data = require('../Data/sample.json');
+	var largest = 0;
+	for (var i = 0; i < data.listings.length; i++) {
+	    var id = data.listings[i].id
+	    if (id > largest) {
+		largest = id
+	    }
+	}
+
+	data.listings.push({
+	    id: largest + 1,
+	    category: [],
+	    picture: "Physics-Tutoring.jpg",
+	    creator: "",
+	    title: this.state.title,
+	    description: this.state.description,
+	    price: this.state.price,
+	    rating: "3.5",
+	    ratings: [],
+	    appointments: []
+	});
+
+	var fs = require('fs');
+	let json = JSON.stringify(data, null, 2);
+	fs.writeFileSync('../Data/sample.json', json);
+
 	window.location.href = "/services";
     }
 

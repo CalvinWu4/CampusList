@@ -1,0 +1,209 @@
+{
+	"listings": [{
+			"id": 0,
+			"category": ["tutoring"],
+			"picture": "Physics-Tutoring.jpg",
+			"creator": "",
+			"title": "Physics I Tutoring",
+			"description": "I got an A in Physics let me help you!",
+			"price": "$10",
+			"rating": "3.5",
+			"ratings": [{
+					"rating": "4",
+					"review": "Showed up on time and was ready to work. Seemed to know what he was talking about."
+				},
+				{
+					"rating": "3",
+					"review": "He was fine but he couldn't explain how to use some of the equations that I had trouble with."
+				}
+			],
+			"appointments": []
+		},
+		{
+			"id": 1,
+			"category": ["rides"],
+			"picture": "Wegmans-Trip.JPG",
+			"creator": "",
+			"title": "Wegmans Trip",
+			"description": "You can catch a ride with me to Wegmans to get your shopping done.",
+			"price": "$3",
+			"rating": "4.5",
+			"ratings": [{
+					"rating": "5",
+					"review": "Great guy, always shows up on time and never parks super far away."
+				},
+				{
+					"rating": "4",
+					"review": "He's a great driver and we have good conversation in the car."
+				}
+			],
+			"appointments": []
+		},
+		{
+			"id": 2,
+			"category": ["party", "rides"],
+			"picture": "Designated-Driver.jpg",
+			"creator": "",
+			"title": "Designated driver",
+			"description": "Let me get you to a party or back home safely",
+			"price": "$5",
+			"rating": "5",
+			"ratings": [{
+					"rating": "5",
+					"review": "I am normally a little nervous to get rides while I am drunk but he is super normal and makes me feel safe. Way better than a random uber driver."
+				},
+				{
+					"rating": "5",
+					"review": "Puts up with us being a bit rowdy in his car. Always gets us to and from where we need to go no problem."
+				}
+			],
+			"appointments": []
+		},
+		{
+			"id": 3,
+			"category": ["design"],
+			"picture": "Poster-Design.png",
+			"creator": "",
+			"title": "Freelance Poster Design",
+			"description": "Need a poster to advertise an event? Let me draw it!",
+			"price": "$20",
+			"rating": "3.5",
+			"ratings": [{
+					"rating": "4",
+					"review": "Nice work. We were doing Microsft Word template before we found her."
+				},
+				{
+					"rating": "3",
+					"review": "Does clean work but was a little late on the deadline."
+				}
+			],
+			"appointments": []
+		},
+		{
+			"id": 4,
+			"category": ["it"],
+			"picture": "Computer-Repair.jpg",
+			"creator": "",
+			"title": "Computer Repair",
+			"description": "I have a computer repair kit so I can do some quick fixes and let you skip the wait at Resnet",
+			"price": "$40",
+			"rating": "2.5",
+			"ratings": [{
+					"rating": "3",
+					"review": "A little overpriced for how quick of a fix it was."
+				},
+				{
+					"rating": "2",
+					"review": "Ended up screwing up my computer even more. Had to take it for resnet for $500."
+				}
+			],
+			"appointments": []
+		},
+		{
+			"id": 5,
+			"category": ["design"],
+			"picture": "LinkedIn-Headshots.jpg",
+			"creator": "",
+			"title": "LinkedIn Headshots",
+			"description": "Dress up and have me take professional headshots for you.",
+			"price": "$15",
+			"rating": "4.5",
+			"ratings": [{
+					"rating": "5",
+					"review": "Probably the best photo taken of me ever."
+				},
+				{
+					"rating": "4",
+					"review": "Really needed something a little more professional than a selfie for LinkedIn. It's boring but it does the job."
+				}
+			],
+			"appointments": []
+		},
+		{
+			"id": 6,
+			"category": ["tutoring"],
+			"picture": "Calculus-Help.png",
+			"creator": "",
+			"title": "Calculus Help",
+			"description": "I am a previous TA for Project Based Calculus I and II. I can answer your questions.",
+			"price": "$10",
+			"rating": "5",
+			"ratings": [{
+					"rating": "5",
+					"review": "Description says it all. He knows what he is talking about."
+				},
+				{
+					"rating": "5",
+					"review": "He should just get hired by RIT. Explained it way better than my professor."
+				}
+			],
+			"appointments": []
+		},
+		{
+			"id": 7,
+			"category": ["tutoring"],
+			"picture": "CS-Tutoring.jpg",
+			"creator": "",
+			"title": "CSCI 141 Tutor",
+			"description": "SLI for the past 3 semesters. Always available the night labs are due. ",
+			"price": "$10",
+			"rating": "4",
+			"ratings": [{
+					"rating": "4",
+					"review": "Got super stuck on the lab with a weird error. She had no clue. Still got a B+ on it though."
+				},
+				{
+					"rating": "5",
+					"review": "Review for exams with her and you can guarentee yourself an A!"
+				}
+			],
+			"appointments": []
+		},
+		{
+			"id": 8,
+			"category": ["tutoring"],
+			"picture": "Essay-Review.jpg",
+			"creator": "",
+			"title": "Essay Review",
+			"description": "The self proclaimed grammar police. Give me at least 10 hours before the deadline to review.",
+			"price": "$10",
+			"rating": "2.5",
+			"ratings": [{
+					"rating": "3",
+					"review": "Found some issues with sentence structure and commas but could have used help with voicing my arguments better."
+				},
+				{
+					"rating": "2",
+					"review": "As said she basically only focuses on grammar and not the content which isn't that helpful."
+				}
+			],
+			"appointments": [
+				"2019-04-01T17:19:39.514Z"
+			]
+		},
+		{
+			"id": 9,
+			"category": ["party", "design"],
+			"picture": "Party-Promotion.jpg",
+			"creator": "",
+			"title": "Party Promotion",
+			"description": "Let met turn your boring 20 person house party into something that rivals Project X",
+			"price": "$35",
+			"rating": "2",
+			"ratings": [{
+					"rating": "3",
+					"review": "He got a lot of people to show up at the party. We charged $5 at the door which means we made a lot back. Was a little too hectic though and I'll stick to how we normally do it."
+				},
+				{
+					"rating": "1",
+					"review": "He basically just invites people off the streets. A bunch of people showed up who weren't cool at all. Really ruined the vibe. Wouldn't recommend."
+				}
+			],
+			"appointments": [
+				"2019-05-01T17:19:39.514Z"
+			]
+		}
+	]
+}
+
+
