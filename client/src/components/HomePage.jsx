@@ -96,7 +96,7 @@ class HomePage extends React.Component {
 
         }
         return(
-            <Link to={{ pathname: '/service', state:listings }} style={{borderColor:'black !important'}}>
+            <Link to={{ pathname: '/service', state:listings, parent:'HomePage' }} style={{borderColor:'black !important'}}>
             <div className='listing'style={this.style.listing}  >
                 <img style={this.style.image} src={require("../styles/images/"+listings['picture'] )}/>
                 <div className='listingTitle' style={this.style.listingTitle}>

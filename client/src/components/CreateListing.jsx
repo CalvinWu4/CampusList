@@ -24,7 +24,7 @@ class CreateListing extends React.Component {
         link: false,
         titleError: false,
         priceError: false,
-    }
+    };
 
     componentDidMount() {
         if (this.props.location.state) {

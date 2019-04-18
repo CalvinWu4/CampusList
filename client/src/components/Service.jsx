@@ -1,9 +1,28 @@
 import React from 'react';
-import { Form, FormGroup, Label, Input, FormText, TabContent, TabPane, Nav, NavItem, NavLink, Card, Button, CardTitle, CardText, Row, Col } from 'reactstrap';
+import {
+    Form,
+    FormGroup,
+    Label,
+    Input,
+    FormText,
+    TabContent,
+    TabPane,
+    Nav,
+    NavItem,
+    NavLink,
+    Card,
+    Button,
+    CardTitle,
+    CardText,
+    Row,
+    Col,
+    ModalHeader, ModalBody, ModalFooter, Modal
+} from 'reactstrap';
 import classnames from 'classnames';
 import Navbar from './NavigationBar';
 import StarRatings from 'react-star-ratings';
 import style from '../styles/css/styles.css';
+import ModalComponent from "./ModalComponent";
 
 export default class Example extends React.Component {
   constructor(props) {
@@ -12,13 +31,21 @@ export default class Example extends React.Component {
     this.toggle = this.toggle.bind(this);
     this.state = {
       activeTab: '1',
+      showModal: false,
       // check the type of your default values set 
       listing: {
         ratings: []
       }
     };
+      this.toggle = this.toggle.bind(this);
   }
+    toggle(e) {
+        e.stopPropagation();
+        this.setState(prevState => ({
+            showModal: !prevState.showModal
+        }));
 
+    }
     removeService(){
         console.log('im here');
         var data = require('../Data/sample');
@@ -41,6 +68,7 @@ export default class Example extends React.Component {
             // Proptypes to enforce typing
             this.setState({listing:this.props.location.state})
         }
+
     }
 
   toggle(tab) {
@@ -64,8 +92,35 @@ export default class Example extends React.Component {
                          starRatedColor="#245CB3"
                         numberOfStars={5}
                         name='rating'
+                             style={{clear:'both', display:'block'}}
                 />
-                <h3>{this.state.listing['price']}</h3>
+                <div style={{display:'flex', flexDirection:'row'}}>
+                <h3 style={{position:'relative', top:'10px'}}>{this.state.listing['price']}</h3>
+                {this.props.location.parent!=='Services' ? (
+                    <ModalComponent state={{title:'Book Appointment', body:<Row id='appointmentsRow' style={{justifyContent:'center'}}>
+                        <FormGroup style={{marginRight:'1em'}}  >
+                        <Input
+                            type="date"
+                        name="date"
+                        id="exampleDate"
+                        placeholder="date placeholder"
+                        />
+                        </FormGroup>
+                        <FormGroup style={{marginLeft:'1em'}}>
+                        <Input
+
+                            type="time"
+                        name="time"
+                        id="exampleTime"
+                        placeholder="time placeholder"
+                        />
+                        </FormGroup>
+                        </Row>, href: '/appointments',buttonColor: 'primary', buttonStyle:{ marginTop:'2%', marginLeft:'1em'}}}/>
+
+                ) : (
+                    <div> </div>
+                )}
+            </div>
             </div>
         </div>
         <Nav tabs style={{width:'50%', marginRight:'auto', marginLeft:'auto'}} >
@@ -85,14 +140,7 @@ export default class Example extends React.Component {
               Reviews
             </NavLink>
           </NavItem>
-           <NavItem>
-            <NavLink
-              className={classnames({ active: this.state.activeTab === '3'})}
-              onClick={() => { this.toggle('3')}} style={{border:'solid'}}
-            >
-              Appointments
-            </NavLink>
-          </NavItem>
+
         </Nav>
         <TabContent activeTab={this.state.activeTab} style={{width:'50%', height:'250px',overflow:'auto', overflowX:'hidden', marginRight:'auto', marginLeft:'auto', border:'solid'}}>
           <TabPane tabId="1">
@@ -120,36 +168,17 @@ export default class Example extends React.Component {
               </Col>
             </Row>
           </TabPane>
-           <TabPane tabId="3">
-            <Row style={{justifyContent:'center'}}>
-              {/*<Col sm="12">*/}
-                <Form>
-                    <Row id='appointmentsRow' style={{justifyContent:'center'}}>
-                        <FormGroup style={{marginTop: '4em', marginBottom: '4em', marginRight:'auto', marginLeft:'3em'}}>
-                          <Input
-                            type="date"
-                            name="date"
-                            id="exampleDate"
-                            placeholder="date placeholder"
-                          />
-                        </FormGroup>
-                        <FormGroup style={{marginTop: '4em', marginBottom: '4em', marginRight:'4em', marginLeft:'5em'}}>
-                          <Input
-                            type="time"
-                            name="time"
-                            id="exampleTime"
-                            placeholder="time placeholder"
-                          />
-                        </FormGroup>
-                    </Row>
-                    <Button style={{display: 'block', margin:'0 auto', marginBottom:'10px',color: 'white', backgroundColor: '#245CB3'}} href="/appointments">Book Appointment</Button>
-                </Form>
-              {/*</Col>*/}
-            </Row>
-          </TabPane>
+
         </TabContent>
-          <Button href='/services' onClick={()=> this.removeService()} style={{ marginLeft:'67%', marginTop:'1%'}} color="danger">Delete Service</Button>
-      </div>
+
+          {this.props.location.parent==='Services' ? (
+              <ModalComponent state={{title:'Delete Service', body:'Are you sure you want to delete this service', href: '/services',buttonColor: 'danger', buttonStyle:{ marginLeft:'67%', marginTop:'1%'}}}/>
+
+              ) : (
+              <div> </div>
+          )}
+
+          </div>
     );
   }
 };

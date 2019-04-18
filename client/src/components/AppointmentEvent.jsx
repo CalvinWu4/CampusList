@@ -4,9 +4,9 @@ import { Modal, ModalHeader, ModalFooter, ModalBody, Button } from 'reactstrap';
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faFlag } from '@fortawesome/free-solid-svg-icons'
+import { faMoneyBill, faReply } from '@fortawesome/free-solid-svg-icons'
 
-library.add( faFlag );
+library.add( faMoneyBill, faReply );
 
 export default class AppointmentEvent extends React.Component {
 
@@ -30,7 +30,7 @@ export default class AppointmentEvent extends React.Component {
 	return (
 	    <div style={{ display: 'inline' }}>
 	    	<span style={{ marginRight: '1em' }}>{this.props.event.title}</span>
-	    	<FontAwesomeIcon className='appointmentEventButton' icon="flag" onClick={this.toggle} />
+			<FontAwesomeIcon className='appointmentEventButton' size="lg" icon="reply" style={{marginRight:3}} onClick={this.toggle}/>
 	    	<Modal isOpen={this.state.showModal} toggle={this.toggle}>
           	    <ModalHeader toggle={this.toggle}>Request Refund</ModalHeader>
                     <ModalBody>

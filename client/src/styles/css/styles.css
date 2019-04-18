@@ -2,6 +2,13 @@
 
 
 
+button.btn.btn-primary{
+    background-color: #245CB3;
+}
+a.btn.btn-primary{
+    background-color: #245CB3;
+}
+
 .landing-button {
     margin-right: 15px;
     width: 125px;
@@ -14,6 +21,9 @@
     background-color: #245CB3;
     color:white;
     border-color:black !important;
+}
+#root > div > div > ul > li{
+    cursor: pointer;
 }
 .login {
     margin-left:15px;
