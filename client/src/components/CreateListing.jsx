@@ -60,6 +60,7 @@ class CreateListing extends React.Component {
                 }
                 break;
         }
+
         let errorName = e.target.name + 'Error';
         if (isError) {
             this.setState({[errorName]: true}, e => this.validateFull(e));
@@ -72,7 +73,7 @@ class CreateListing extends React.Component {
 
     validateFull = e => {
         if (
-            this.state.titleError || this.state.priceError || this.state.dropDownValue === 'Select a category') {
+            this.state.titleError || this.state.title===''|| this.state.price===''|| this.state.description===''|| this.state.priceError || this.state.dropDownValue === 'Select a category') {
             console.log('im invalid');
             this.setState({link: false});
         } else {
@@ -89,7 +90,8 @@ class CreateListing extends React.Component {
     }
 
     changeValue(e) {
-        this.setState({dropDownValue: e.currentTarget.textContent})
+        this.setState({dropDownValue: e.currentTarget.textContent});
+        this.validate(e);
     }
 
     render() {
@@ -121,7 +123,7 @@ class CreateListing extends React.Component {
 
                         <FormGroup>
                             <h4> * Category </h4>
-                            <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
+                            <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle} >
                                 <DropdownToggle caret>
                                     {this.state.dropDownValue}
                                 </DropdownToggle>
