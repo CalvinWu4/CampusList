@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Modal, ModalHeader, ModalFooter, ModalBody, Button } from 'reactstrap';
-
+import style from '../styles/css/styles.css'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMoneyBill, faReply } from '@fortawesome/free-solid-svg-icons'
@@ -14,11 +14,29 @@ export default class AppointmentEvent extends React.Component {
 	super(props);
 
 	this.toggle = this.toggle.bind(this);
+	this.toggleNested = this.toggleNested.bind(this);
+	this.toggleAll = this.toggleAll.bind(this);
 	this.state = {
-	    showModal: false
+	    showModal: false,
+		nestedModal: false,
+		closeAll: false
+
 	}
     }
 
+	toggleNested() {
+		this.setState({
+			nestedModal: !this.state.nestedModal,
+			closeAll: false
+		});
+	}
+
+	toggleAll() {
+		this.setState({
+			nestedModal: !this.state.nestedModal,
+			closeAll: true
+		});
+	}
     toggle(e) {
 	e.stopPropagation();
 	this.setState(prevState => ({
@@ -26,19 +44,35 @@ export default class AppointmentEvent extends React.Component {
 	}));
     }
 
-    render() {
+    componentDidMount() {
+    	console.log(this.props.event);
+	}
+
+	render() {
 	return (
-	    <div style={{ display: 'inline' }}>
-	    	<span style={{ marginRight: '1em' }}>{this.props.event.title}</span>
-			<FontAwesomeIcon className='appointmentEventButton' size="lg" icon="reply" style={{marginRight:3}} onClick={this.toggle}/>
+	    <div style={{ display: 'inline' }} >
+	    	<div onClick={this.toggle}><span style={{ marginRight: '1em' }} >{this.props.event.title}</span></div>
 	    	<Modal isOpen={this.state.showModal} toggle={this.toggle}>
-          	    <ModalHeader toggle={this.toggle}>Request Refund</ModalHeader>
+          	    <ModalHeader toggle={this.toggle}>Appointment Details</ModalHeader>
                     <ModalBody>
-	    		<b>Reason</b>
-                        <textarea rows='4' style={{ width: '100%' }} />
+						<b>Title: </b> {this.props.event.title} <br/>
+						<b>Start: </b> {this.props.event.end.toLocaleString()}<br/>
+						<b>End: </b>{this.props.event.end.toLocaleString()}<br/>
           	    </ModalBody>
           	    <ModalFooter>
-            		<Button color="danger" onClick={this.toggle}>Report</Button>{' '}
+
+					<Button color="primary" onClick={this.toggleNested}>Request Refund</Button>
+					<Modal isOpen={this.state.nestedModal} toggle={this.toggleNested} onClosed={this.state.closeAll ? this.toggle : undefined}>
+						<ModalHeader>Request Refund</ModalHeader>
+						<ModalBody>
+							<b>Reason</b>
+							<textarea rows='4' style={{ width: '100%' }} />
+						</ModalBody>
+						<ModalFooter>
+							<Button color="primary" onClick={this.toggleNested}>Confirm</Button>{' '}
+							<Button color="secondary" onClick={this.toggleAll}>Cancel</Button>
+						</ModalFooter>
+					</Modal>
             		<Button color="secondary" onClick={this.toggle}>Cancel</Button>
           	    </ModalFooter>
         	</Modal>
