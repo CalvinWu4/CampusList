@@ -138,7 +138,7 @@ class HomePage extends React.Component {
                     </Row>
 
                 </Container>
-                <Container style={{maxHeight:'70vh', overflow:'auto' , border:'solid', borderColor:'grey'}}>
+                <Container >
                     <div style={{display:'inline-block'}}>
                         {this.state.service_ids.map((row,i) => (
                             <div style={{display:'inline-block', marginRight:'45px'}}>
