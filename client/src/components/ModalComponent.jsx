@@ -20,8 +20,8 @@ class ModalComponent extends React.Component {
 
     render() {
         return (
-            <div>
-                <Button color={this.props.state['buttonColor']} style={this.props.state['buttonStyle']} onClick={this.toggle}>{this.props.state['title']}</Button>
+            <div style={{display:this.props.state['display']? this.props.state['display']: 'block'}}>
+                <Button disabled={this.props.state['disabled']? this.props.state['disabled']: false} color={this.props.state['buttonColor']} style={this.props.state['buttonStyle']} onClick={this.toggle}>{this.props.state['title']}</Button>
                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                     <ModalHeader toggle={this.toggle}>{this.props.state['title']}</ModalHeader>
                     <ModalBody>

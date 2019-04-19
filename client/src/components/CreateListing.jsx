@@ -3,7 +3,7 @@ import { Button, Form, FormFeedback, FormGroup, Label, Input, FormText,Row, Col,
 import {Link, Redirect} from 'react-router-dom';
 import Navbar from './NavigationBar';
 import SideNav from "./SideNavigation";
-
+import ModalComponent from './ModalComponent';
 class CreateListing extends React.Component {
 
     constructor(props) {
@@ -153,8 +153,22 @@ class CreateListing extends React.Component {
 
                             <Button style={{float: "left", position: "relative"}}
                                 href="/homepage" color="secondary" size="lg" className='landing-button'>Cancel</Button>
-                        <Button style={{float: "right", position: "relative"}}
-                                href="/homepage" color="primary" size="lg" className='landing-button' disabled={!this.state.link}>Submit</Button>
+                        <ModalComponent state={{title:'Create Listing', body:
+                                <div>
+                                    <div><p style={{fontSize:'16px', marginRight: '5px',fontFamily:'Lato', display:'inline-block'}}>Title: </p>
+                                    {this.state.title}
+                                    </div>
+                                    <div><p style={{fontSize:'16px', marginRight: '5px',fontFamily:'Lato', display:'inline-block'}}>Price: </p>
+                                        {this.state.price}
+                                    </div>
+                                    <div><p style={{fontSize:'16px', marginRight: '5px',fontFamily:'Lato', display:'inline-block'}}>Category: </p>
+                                        {this.state.dropDownValue}
+                                    </div>
+                                    <div><p style={{fontSize:'16px', marginRight: '5px',fontFamily:'Lato', display:'inline-block'}}>Description: </p>
+                                        {this.state.description}
+                                    </div>
+                            </div>, href: '/homepage',disabled: !this.state.link,buttonColor: 'primary', display: 'inline-block',buttonStyle:{float: "right", position: "relative"}}}/>
+
                     </Form>
                 </div>
             </div>
