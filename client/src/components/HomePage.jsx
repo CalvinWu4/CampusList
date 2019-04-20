@@ -17,8 +17,10 @@ import {Link} from 'react-router-dom';
 import ReactDOM from 'react-dom';
 import SideNav from './SideNavigation';
 import Navbar from './NavigationBar';
+import $ from 'jquery';
 
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import navBar from "./Services";
 
 class HomePage extends React.Component {
 
@@ -81,6 +83,31 @@ class HomePage extends React.Component {
         }
     }
 
+    componentDidMount() {
+        $(function () {
+
+            var $sidebar = $("#sideNav"),
+                $window = $(window),
+                navBarHeight = $(".navBar")[0].offsetHeight;
+
+            $window.scroll(function () {
+                console.log($window.scrollTop());
+                if ($window.scrollTop() > navBarHeight) {
+                    $sidebar.stop().animate({
+                        marginTop: 0
+                    }, 0);
+                } else {
+                    $sidebar.stop().animate({
+                        marginTop: navBarHeight
+                    }, 0);
+                }
+            });
+
+            // Prevent sidebar overlapping search bar
+            $("#mainContainer").css( { marginLeft : 240 } );
+        });
+    }
+
     listing(id){
         var listings={};
         var pic='';
@@ -121,9 +148,9 @@ class HomePage extends React.Component {
             <div>
             <Navbar/>
                 <SideNav style={{display:'flex'}}/>
-                <Container style={{display:'flex', flexDirection:'column'}}>
+                <Container id="mainContainer" style={{display:'flex', flexDirection:'column'}}>
 
-                <Container style={{marginTop: 20}}>
+                <Container style={{marginTop: '3%'}}>
 
                     <Row form >
                         <Col md={12}>

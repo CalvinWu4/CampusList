@@ -35,7 +35,7 @@ class SideNavigation extends React.Component {
     render() {
         return (
             <div>
-            <SideNav style={{backgroundColor: 'grey', position:'fixed', float:'left', height:'100%'}}
+            <SideNav id='sideNav' style={{backgroundColor: 'grey', float:'left', height:'100%', marginTop: '4.6em', position:'fixed'}}
                 onSelect={(selected) => {
                     // Add your code here
                 }}
