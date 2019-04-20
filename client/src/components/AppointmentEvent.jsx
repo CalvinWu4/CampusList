@@ -63,8 +63,13 @@ export default class AppointmentEvent extends React.Component {
 			<b>End: </b>{this.props.event.end.toLocaleString()}<br/>
           	    </ModalBody>
           	    <ModalFooter>
-			<Button color="primary" onClick={this.toggleNested}>Request Refund</Button>
-			<Modal isOpen={this.state.nestedModal} toggle={this.toggleNested} onClosed={this.state.closeAll ? this.toggle : undefined}>
+					{this.props.event.isUpcoming ? (
+						<Button color="primary" onClick={this.toggleNested}>Cancel Appointment</Button>
+						):(
+						<Button color="primary" onClick={this.toggleNested}>Request Refund</Button>
+						)}
+
+						<Modal isOpen={this.state.nestedModal} toggle={this.toggleNested} onClosed={this.state.closeAll ? this.toggle : undefined}>
 				<ModalHeader>Request Refund</ModalHeader>
 				<ModalBody>
 					<b>Reason</b>
