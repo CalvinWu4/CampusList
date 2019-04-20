@@ -17,8 +17,10 @@ import {Link} from 'react-router-dom';
 import ReactDOM from 'react-dom';
 import SideNav from './SideNavigation';
 import Navbar from './NavigationBar';
+import $ from 'jquery';
 
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import navBar from "./Services";
 
 class HomePage extends React.Component {
 
@@ -80,7 +82,30 @@ class HomePage extends React.Component {
     }
 
     componentDidMount() {
+        $(function () {
 
+            var $sidebar = $("#sideNav"),
+                $window = $(window),
+                navBarHeight = $(".navBar")[0].offsetHeight;
+
+            $window.scroll(function () {
+                console.log($window.scrollTop());
+                if ($window.scrollTop() > navBarHeight) {
+                    $sidebar.stop().animate({
+                        marginTop: 0
+                    }, 0);
+                } else {
+                    $sidebar.stop().animate({
+                        marginTop: navBarHeight
+                    }, 0);
+                }
+            });
+            // Set sidebar to be expanded by default
+            $("#sideNav > button").click();
+
+            // Prevent sidebar overlapping search bar
+            $("#mainContainer").css( { marginLeft : 240 } );
+        });
     }
 
     setListings(data) {
@@ -129,8 +154,10 @@ class HomePage extends React.Component {
         return (
             <div>
             <Navbar/>
-            <SideNav/>
-                <Container style={{marginTop: 20}}>
+                <SideNav style={{display:'flex'}}/>
+                <Container id="mainContainer" style={{display:'flex', flexDirection:'column'}}>
+
+                <Container style={{marginTop: '3%'}}>
 
                     <Row form >
                         <Col md={12}>
@@ -151,6 +178,7 @@ class HomePage extends React.Component {
                             </div>
                         ))}
                     </div>
+                </Container>
                 </Container>
             </div>
         )}
