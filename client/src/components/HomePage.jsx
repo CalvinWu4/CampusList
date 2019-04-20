@@ -74,15 +74,20 @@ class HomePage extends React.Component {
       service_ids:[],
     };
     componentWillMount() {
-        var data = require('../Data/sample.json'); // forward slashes will depend on the file location
-        this.setState({services: data.listings});
-        for(var i = 0; i < data.listings.length; i++) {
-           this.state.service_ids.push(data.listings[i].id);
-        }
+	fetch('http://localhost:5000/api/listings')
+	.then(response => response.json())
+	.then(data => this.setListings( data ));
     }
 
     componentDidMount() {
 
+    }
+
+    setListings(data) {
+	for(var i = 0; i < data.listings.length; i++) {
+           this.state.service_ids.push(data.listings[i].id);
+        }
+	this.setState({services: data.listings});
     }
 
     listing(id){

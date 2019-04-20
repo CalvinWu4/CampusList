@@ -20,7 +20,12 @@ export default class Appointments extends React.Component {
     }
 
     componentWillMount() {
-	var data = require('../Data/sample.json');
+	fetch('http://localhost:5000/api/listings')
+	.then(response => response.json())
+	.then(data => this.setAppointments( data ));
+    }
+
+    setAppointments(data) {
 	var events = [];
 	for (var i = 0; i < data.listings.length; i++) {
 	    var listing = data.listings[i];
