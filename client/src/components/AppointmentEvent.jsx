@@ -38,7 +38,10 @@ export default class AppointmentEvent extends React.Component {
 		});
 	}
     toggle(e) {
-	e.stopPropagation();
+	if (e) {
+	    e.stopPropagation();
+	}
+
 	this.setState(prevState => ({
 	    showModal: !prevState.showModal
 	}));
@@ -55,24 +58,23 @@ export default class AppointmentEvent extends React.Component {
 	    	<Modal isOpen={this.state.showModal} toggle={this.toggle}>
           	    <ModalHeader toggle={this.toggle}>Appointment Details</ModalHeader>
                     <ModalBody>
-						<b>Title: </b> {this.props.event.title} <br/>
-						<b>Start: </b> {this.props.event.end.toLocaleString()}<br/>
-						<b>End: </b>{this.props.event.end.toLocaleString()}<br/>
+			<b>Title: </b> {this.props.event.title} <br/>
+			<b>Start: </b> {this.props.event.end.toLocaleString()}<br/>
+			<b>End: </b>{this.props.event.end.toLocaleString()}<br/>
           	    </ModalBody>
           	    <ModalFooter>
-
-					<Button color="primary" onClick={this.toggleNested}>Request Refund</Button>
-					<Modal isOpen={this.state.nestedModal} toggle={this.toggleNested} onClosed={this.state.closeAll ? this.toggle : undefined}>
-						<ModalHeader>Request Refund</ModalHeader>
-						<ModalBody>
-							<b>Reason</b>
-							<textarea rows='4' style={{ width: '100%' }} />
-						</ModalBody>
-						<ModalFooter>
-							<Button color="primary" onClick={this.toggleNested}>Confirm</Button>{' '}
-							<Button color="secondary" onClick={this.toggleAll}>Cancel</Button>
-						</ModalFooter>
-					</Modal>
+			<Button color="primary" onClick={this.toggleNested}>Request Refund</Button>
+			<Modal isOpen={this.state.nestedModal} toggle={this.toggleNested} onClosed={this.state.closeAll ? this.toggle : undefined}>
+				<ModalHeader>Request Refund</ModalHeader>
+				<ModalBody>
+					<b>Reason</b>
+					<textarea rows='4' style={{ width: '100%' }} />
+				</ModalBody>
+				<ModalFooter>
+					<Button color="primary" onClick={this.toggleNested}>Confirm</Button>{' '}
+					<Button color="secondary" onClick={this.toggleAll}>Cancel</Button>
+				</ModalFooter>
+			</Modal>
             		<Button color="secondary" onClick={this.toggle}>Cancel</Button>
           	    </ModalFooter>
         	</Modal>
