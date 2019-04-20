@@ -81,10 +81,6 @@ class HomePage extends React.Component {
         }
     }
 
-    componentDidMount() {
-
-    }
-
     listing(id){
         var listings={};
         var pic='';
@@ -124,7 +120,9 @@ class HomePage extends React.Component {
         return (
             <div>
             <Navbar/>
-            <SideNav/>
+                <SideNav style={{display:'flex'}}/>
+                <Container style={{display:'flex', flexDirection:'column'}}>
+
                 <Container style={{marginTop: 20}}>
 
                     <Row form >
@@ -146,6 +144,7 @@ class HomePage extends React.Component {
                             </div>
                         ))}
                     </div>
+                </Container>
                 </Container>
             </div>
         )}
