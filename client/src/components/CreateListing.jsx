@@ -33,16 +33,25 @@ class CreateListing extends React.Component {
         }
     }
     createListing(){
-        console.log('yurr');
-        fetch('http://localhost:5000/api/listings' , {
+        fetch('http://localhost:5000/api/add-listing' , {
             method: "POST",
-            headers: {
+	    headers: {
                 'Content-type': 'application/json'
-            },
-            body: JSON.stringify(this.state)
+            }, body: JSON.stringify({
+		category: [ this.state.dropDownValue ],
+		picture: 'custom-service.jpg',
+		creator: '',
+		title: this.state.title,
+		description: this.state.description,
+		price: this.state.price,
+		rating: 'None',
+		ratings: [],
+		appointments: []
+	    })
         })
-            .then((result) => result.json())
-            .then((info) => { console.log(info); })
+
+	// Go home
+	window.location.replace("/homepage");
     }
     change = e => {
         this.setState({
@@ -181,7 +190,7 @@ class CreateListing extends React.Component {
                                     <div><b style={{fontSize:'16px', marginRight: '5px',fontFamily:'Lato', display:'inline-block'}}>Description: </b>
                                         {this.state.description}
                                     </div>
-                            </div>, href: '/homepage',disabled: !this.state.link,buttonColor: 'primary', display: 'inline-block',buttonStyle:{float: "right", position: "relative"}}}/>
+                            </div>, onClick: this.createListing, disabled: !this.state.link,buttonColor: 'primary', display: 'inline-block',buttonStyle:{float: "right", position: "relative"}}}/>
 
                     </Form>
                 </div>
