@@ -89,10 +89,10 @@ class Services extends React.Component {
     }
 
     setListings(data) {
-	this.setState({services: data.listings});
-        for(var i = 0; i < data.listings.length; i++) {
+	for(var i = 0; i < data.listings.length; i++) {
             this.state.service_ids.push(data.listings[i].id);
         }
+	this.setState({services: data.listings});
     }
 
     listing(id){
