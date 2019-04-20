@@ -3,12 +3,12 @@ import { Button, Form, FormFeedback, FormGroup, Label, Input, FormText,Row, Col,
 import {Link, Redirect} from 'react-router-dom';
 import Navbar from './NavigationBar';
 import SideNav from "./SideNavigation";
-
+import ModalComponent from './ModalComponent';
 class CreateListing extends React.Component {
 
     constructor(props) {
         super(props);
-
+        this.createListing= this.createListing.bind(this);
         this.toggle = this.toggle.bind(this);
         this.changeValue = this.changeValue.bind(this);
         this.state = {
@@ -24,7 +24,7 @@ class CreateListing extends React.Component {
         link: false,
         titleError: false,
         priceError: false,
-    }
+    };
 
     componentDidMount() {
         if (this.props.location.state) {
@@ -32,7 +32,18 @@ class CreateListing extends React.Component {
             this.setState({price: this.props.location.state.formValues.price});
         }
     }
-
+    createListing(){
+        console.log('yurr');
+        fetch('http://localhost:5000/api/listings' , {
+            method: "POST",
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify(this.state)
+        })
+            .then((result) => result.json())
+            .then((info) => { console.log(info); })
+    }
     change = e => {
         this.setState({
             [e.target.name]: e.target.value
@@ -60,6 +71,7 @@ class CreateListing extends React.Component {
                 }
                 break;
         }
+
         let errorName = e.target.name + 'Error';
         if (isError) {
             this.setState({[errorName]: true}, e => this.validateFull(e));
@@ -72,7 +84,7 @@ class CreateListing extends React.Component {
 
     validateFull = e => {
         if (
-            this.state.titleError || this.state.priceError || this.state.dropDownValue === 'Select a category') {
+            this.state.titleError || this.state.title===''|| this.state.price===''|| this.state.description===''|| this.state.priceError || this.state.dropDownValue === 'Select a category') {
             console.log('im invalid');
             this.setState({link: false});
         } else {
@@ -89,8 +101,10 @@ class CreateListing extends React.Component {
     }
 
     changeValue(e) {
-        this.setState({dropDownValue: e.currentTarget.textContent})
+        this.setState({dropDownValue: e.currentTarget.textContent});
+        this.validate(e);
     }
+
 
     render() {
         let link;
@@ -121,7 +135,7 @@ class CreateListing extends React.Component {
 
                         <FormGroup>
                             <h4> * Category </h4>
-                            <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
+                            <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle} >
                                 <DropdownToggle caret>
                                     {this.state.dropDownValue}
                                 </DropdownToggle>
@@ -153,8 +167,22 @@ class CreateListing extends React.Component {
 
                             <Button style={{float: "left", position: "relative"}}
                                 href="/homepage" color="secondary" size="lg" className='landing-button'>Cancel</Button>
-                        <Button style={{float: "right", position: "relative"}}
-                                href="/homepage" color="primary" size="lg" className='landing-button' disabled={!this.state.link}>Submit</Button>
+                        <ModalComponent state={{title:'Create Listing', body:
+                                <div>
+                                    <div><b style={{fontSize:'16px', marginRight: '5px',fontFamily:'Lato', display:'inline-block'}}>Title: </b>
+                                    {this.state.title}
+                                    </div>
+                                    <div><b style={{fontSize:'16px', marginRight: '5px',fontFamily:'Lato', display:'inline-block'}}>Price: </b>
+                                        {this.state.price}
+                                    </div>
+                                    <div><b style={{fontSize:'16px', marginRight: '5px',fontFamily:'Lato', display:'inline-block'}}>Category: </b>
+                                        {this.state.dropDownValue}
+                                    </div>
+                                    <div><b style={{fontSize:'16px', marginRight: '5px',fontFamily:'Lato', display:'inline-block'}}>Description: </b>
+                                        {this.state.description}
+                                    </div>
+                            </div>, href: '/homepage',disabled: !this.state.link,buttonColor: 'primary', display: 'inline-block',buttonStyle:{float: "right", position: "relative"}}}/>
+
                     </Form>
                 </div>
             </div>

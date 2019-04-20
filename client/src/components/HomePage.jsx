@@ -96,7 +96,7 @@ class HomePage extends React.Component {
 
         }
         return(
-            <Link to={{ pathname: '/service', state:listings }} style={{borderColor:'black !important'}}>
+            <Link to={{ pathname: '/service', state:listings, parent:'HomePage' }} style={{borderColor:'black !important'}}>
             <div className='listing'style={this.style.listing}  >
                 <img style={this.style.image} src={require("../styles/images/"+listings['picture'] )}/>
                 <div className='listingTitle' style={this.style.listingTitle}>
@@ -138,7 +138,7 @@ class HomePage extends React.Component {
                     </Row>
 
                 </Container>
-                <Container style={{maxHeight:'70vh', overflow:'auto' , border:'solid', borderColor:'grey'}}>
+                <Container >
                     <div style={{display:'inline-block'}}>
                         {this.state.service_ids.map((row,i) => (
                             <div style={{display:'inline-block', marginRight:'45px'}}>

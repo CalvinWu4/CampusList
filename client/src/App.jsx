@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import Home from './components/Home'
-import Register from './components/Register';
 import Login from './components/Login';
 import Service from './components/Service';
 import HomePage from './components/HomePage';
@@ -20,7 +19,6 @@ class App extends Component {
             <div>
             <Route path ='/' component={Home} exact/>
             <Route path ='/login' component={Login}/>
-            <Route path='/register'  component={Register}/>
             <Route path='/service' component = {Service}/>
             <Route path='/homepage' component = {HomePage}/>
             <Route path='/signup' component = {SignUp}/>
