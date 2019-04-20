@@ -47,18 +47,17 @@ export default class Example extends React.Component {
 
     }
     removeService(){
-        console.log('im here');
-        var data = require('../Data/sample');
-        var removeService = this.state.listing['id'];
-        for(var i = 0; i < data.listings.length; i++) {
-            if(data.listings[i].id===removeService){
-                data.listings.splice(i, 1);
-            }
-        }
-        console.log('im here');
-        console.log(data);
-        var fs = require('fs');
-        fs.writeFile('../Data/sample', data, 'utf8');
+        //var data = require('../Data/sample');
+        //var removeService = this.state.listing['id'];
+        //for(var i = 0; i < data.listings.length; i++) {
+        //    if(data.listings[i].id===removeService){
+        //        data.listings.splice(i, 1);
+        //    }
+        //}
+        //console.log('im here');
+        //console.log(data);
+        //var fs = require('fs');
+        //fs.writeFile('../Data/sample', data, 'utf8');
 
     }
     /// Checkout liefcycle methods to find besttime to set listing (before render)
