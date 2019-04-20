@@ -1,25 +1,33 @@
 const express= require('express');
-const mongoose = require('mongoose');
+
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
-const form= require('./routes/api/form');
 const app=express();
 
 //Bodyparser middleware
 app.use(bodyParser.json());
 app.use(cors());
 
-//DB Config
-const db= require('./config/keys').mongoURI;
+app.get('/api/listings', (req, res) => {
+    const customers = [
+        {id: 1, firstName: 'John', lastName: 'Doe'},
+        {id: 2, firstName: 'Brad', lastName: 'Traversy'},
+        {id: 3, firstName: 'Mary', lastName: 'Swanson'},
+    ];
 
-//Connect to mongo
-mongoose.connect(db)
-    .then(()=> console.log('mongo db connected'))
-    .catch(err=> console.log(err));
+    res.json(customers);
+});
+app.post('/api/listings', (req, res) => {
+    const customers = [
+        {id: 1, firstName: 'John', lastName: 'Doe'},
+        {id: 2, firstName: 'Brad', lastName: 'Traversy'},
+        {id: 3, firstName: 'Mary', lastName: 'Swanson'},
+    ];
 
+    res.json(customers);
+});
 //Use Routes
-app.use('/api/form', form);
 const port = process.env.PORT || 5000;
 app.listen(port, () => console.log('Server started on port ' + port));
 
