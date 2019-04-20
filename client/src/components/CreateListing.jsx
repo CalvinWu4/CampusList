@@ -8,7 +8,7 @@ class CreateListing extends React.Component {
 
     constructor(props) {
         super(props);
-
+        this.createListing= this.createListing.bind(this);
         this.toggle = this.toggle.bind(this);
         this.changeValue = this.changeValue.bind(this);
         this.state = {
@@ -32,7 +32,18 @@ class CreateListing extends React.Component {
             this.setState({price: this.props.location.state.formValues.price});
         }
     }
-
+    createListing(){
+        console.log('yurr');
+        fetch('http://localhost:5000/api/listings' , {
+            method: "POST",
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify(this.state)
+        })
+            .then((result) => result.json())
+            .then((info) => { console.log(info); })
+    }
     change = e => {
         this.setState({
             [e.target.name]: e.target.value
@@ -93,6 +104,7 @@ class CreateListing extends React.Component {
         this.setState({dropDownValue: e.currentTarget.textContent});
         this.validate(e);
     }
+
 
     render() {
         let link;
