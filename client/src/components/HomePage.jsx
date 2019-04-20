@@ -102,6 +102,8 @@ class HomePage extends React.Component {
                     }, 0);
                 }
             });
+            // Set sidebar to be expanded by default
+            $("#sideNav > button").click();
 
             // Prevent sidebar overlapping search bar
             $("#mainContainer").css( { marginLeft : 240 } );
