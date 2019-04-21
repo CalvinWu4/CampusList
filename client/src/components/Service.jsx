@@ -29,6 +29,8 @@ export default class Example extends React.Component {
     super(props);
 
     this.toggle = this.toggle.bind(this);
+    this.book = this.book.bind(this);
+    this.removeService = this.removeService.bind(this);
     this.state = {
       activeTab: '1',
       showModal: false,
@@ -37,7 +39,6 @@ export default class Example extends React.Component {
         ratings: []
       }
     };
-      this.toggle = this.toggle.bind(this);
   }
     toggle(e) {
         e.stopPropagation();
@@ -46,7 +47,9 @@ export default class Example extends React.Component {
         }));
 
     }
+
     removeService(){
+	window.location.replace('/services');
         //var data = require('../Data/sample');
         //var removeService = this.state.listing['id'];
         //for(var i = 0; i < data.listings.length; i++) {
@@ -60,6 +63,11 @@ export default class Example extends React.Component {
         //fs.writeFile('../Data/sample', data, 'utf8');
 
     }
+
+    book() {
+	window.location.replace('/appointments');
+    }
+
     /// Checkout liefcycle methods to find besttime to set listing (before render)
     componentWillMount() {
         if (this.props.location.state) {
@@ -114,7 +122,7 @@ export default class Example extends React.Component {
                         placeholder="time placeholder"
                         />
                         </FormGroup>
-                        </Row>, href: '/appointments',buttonColor: 'primary', buttonStyle:{ marginTop:'2%', marginLeft:'1em'}}}/>
+                        </Row>, onClick: this.book,buttonColor: 'primary', buttonStyle:{ marginTop:'2%', marginLeft:'1em'}}}/>
 
                 ) : (
                     <div> </div>
@@ -171,7 +179,7 @@ export default class Example extends React.Component {
         </TabContent>
 
           {this.props.location.parent==='Services' ? (
-              <ModalComponent state={{title:'Delete Service', body:'Are you sure you want to delete this service', href: '/services',buttonColor: 'danger', buttonStyle:{ marginLeft:'67%', marginTop:'1%'}}}/>
+              <ModalComponent state={{title:'Delete Service', body:'Are you sure you want to delete this service', onClick: this.removeService, buttonColor: 'danger', buttonStyle:{ marginLeft:'67%', marginTop:'1%'}}}/>
 
               ) : (
               <div> </div>
