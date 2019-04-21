@@ -51,6 +51,20 @@ app.delete('/api/listings/:id', (req, res) => {
     res.sendStatus(204);
 });
 
+app.post('/api/appointments', (req, res) => {
+    console.log('Adding Appointment');
+    listingId = req.body.id;
+    date = req.body.date;
+    modifyListings((data) => {
+	index = data.listings.findIndex(listing => { return listing.id == listingId });
+	newData = data;
+	newData.listings[index].appointments.push(date);
+	return newData;
+    });
+
+    res.sendStatus(201);
+});
+
 // Call with a lambda that takes the object from the JSON file, modifies it in some way, and returns it again.
 function modifyListings(convertHandler) {
     fs = require('fs');
