@@ -169,7 +169,7 @@ class HomePage extends React.Component {
                     <Row form >
                         <Col md={12}>
                             <FormGroup>
-                                <Input type='text' name='search' id='search' value={this.state.searchText}
+                                <Input type='text' name='search' id='search' placeholder='Search listings' value={this.state.searchText}
                                     onChange={event => {
                                         this.setState({searchText: event.target.value})
                                         $('.listingTitle').each(function () {
