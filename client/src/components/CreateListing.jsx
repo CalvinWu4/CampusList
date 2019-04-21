@@ -34,6 +34,10 @@ class CreateListing extends React.Component {
         }
     }
     createListing(){
+	if (!this.state.price.startsWith('$')) {
+	    this.state.price = '$' + this.state.price;
+	}
+
         fetch('http://localhost:5000/api/add-listing' , {
             method: "POST",
 	    headers: {
