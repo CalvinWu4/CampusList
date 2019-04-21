@@ -70,30 +70,28 @@ class Profile extends React.Component {
                         </svg>
                     </div>
                     
-                    <h2 style={{textAlign: "left", marginLeft: "25%", marginTop: "1%"}}>Description</h2>
                     <div style={{height: "50%", width: "100%", textAlign: "right"}}>
-                        <textarea style={{position: "relative", right: "0%", height: "75%", width: "50%", marginLeft: "25%", marginRight: "25%", resize: "none"}} rows="3" cols="150" display="auto">
-                            I'm a Software Engineer here at RIT. I'm usually in Golisano and I love participating in competitive events.
-                        </textarea>
+                        <p style={{textAlign: "left", position: "relative", right: "0%", height: "75%", width: "50%",
+                            marginLeft: "25%", marginRight: "25%", resize: "none", disabled:'true'}} rows="3"
+                                  cols="150" display="auto">
+                            I'm a Software Engineer here at RIT. I'm usually in Golisano and I love participating in
+                            competitive events.
+                        </p>
                     </div>
                     <div style={{display: "inline-flex"}}>
-                    <Link to={{ pathname: '/appointments'}} style={{position: "relative", bottom: "2%"}}>
-                        <div style={this.style.listing}  >
+                        <Link to={{ pathname: '/appointments'}} style={this.style.listing}  >
                             <img style={this.style.image} src={require("../styles/images/calendar.jpg")}/>
                             <div className='listingTitle' style={this.style.listingTitle}>
                                 <p style={{fontFamily: "Lato", fontSize:"20px", color:'white'}}>My Appointments</p>
                             </div>
-                        </div>
-                    </Link>
+                        </Link>
 
-                    <Link to={{ pathname: '/services'}} style={{position: "relative", bottom: "2%"}}>
-                        <div style={this.style.listing}  >
+                        <Link to={{ pathname: '/services'}} style={this.style.listing}  >
                             <img style={this.style.image} src={require("../styles/images/service.jpg")}/>
                             <div className='listingTitle' style={this.style.listingTitle}>
                                 <p style={{fontFamily: "Lato", fontSize:"20px", color:'white'}}>My Services</p>
                             </div>
-                        </div>
-                    </Link>
+                        </Link>
                     </div>
                 </div>
 
