@@ -23,7 +23,7 @@ app.post('/api/add-listing', (req, res) => {
 	// Determine ID
 	var maxId = -1;
 	for (i = 0; i < data.listings.length; i++) {
-	    id = data.listings[i];
+	    id = data.listings[i].id;
 	    if (id > maxId) {
 		maxId = id;
 	    }
@@ -35,7 +35,7 @@ app.post('/api/add-listing', (req, res) => {
 	return newData;
     });
     
-    res.status(201);
+    res.sendStatus(201);
 });
 
 // Call with a lambda that takes the object from the JSON file, modifies it in some way, and returns it again.
@@ -45,7 +45,7 @@ function modifyListings(convertHandler) {
 	if (err) throw err;
 	listings = JSON.parse(data);
 	modified = convertHandler(listings);
-	json = JSON.stringify(modified);
+	json = JSON.stringify(modified, null, 2);
 	fs.writeFile('Data/listings.json', json, (err) => {});
     });
 }

@@ -44,15 +44,18 @@ class CreateListing extends React.Component {
 		title: this.state.title,
 		description: this.state.description,
 		price: this.state.price,
-		rating: 'None',
+		rating: '3.0',
 		ratings: [],
 		appointments: []
 	    })
         })
-
-	// Go home
-	window.location.replace("/homepage");
+	.then(response => {
+	    // Go home
+	    window.location.replace("/homepage");
+	})
+	.catch(err => { console.log(err) });
     }
+
     change = e => {
         this.setState({
             [e.target.name]: e.target.value
