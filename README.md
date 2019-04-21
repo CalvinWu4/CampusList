@@ -2,7 +2,9 @@
 Students can make appointments for services offered by other students.
 
 # Installation
-First, ensure `npm` (Node Package Manager) is installed on your machine. Then:
+First, ensure `npm` (Node Package Manager) is installed on your machine. 
+If not, install it from here: https://nodejs.org/en/download/
+Then:
 - Windows: Run `start.bat`
 - Linux & macOS: Run `start.sh`
 
