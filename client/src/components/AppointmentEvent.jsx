@@ -16,6 +16,7 @@ export default class AppointmentEvent extends React.Component {
 	this.toggle = this.toggle.bind(this);
 	this.toggleNested = this.toggleNested.bind(this);
 	this.toggleAll = this.toggleAll.bind(this);
+	this.cancelAppointment = this.cancelAppointment.bind(this);
 	this.state = {
 	    showModal: false,
 		nestedModal: false,
@@ -47,6 +48,23 @@ export default class AppointmentEvent extends React.Component {
 	}));
     }
 
+    cancelAppointment() {
+	fetch('http://localhost:5000/api/appointments' , {
+            method: "DELETE",
+	    headers: {
+                'Content-type': 'application/json'
+            }, body: JSON.stringify({
+		id: this.props.event.listingId,
+		date: this.props.event.start
+	    })
+        })
+	.then(response => {
+	    // Go to My Appointments
+	    window.location.replace("/appointments");
+	})
+	.catch(err => { console.log(err) });
+    }
+
     componentDidMount() {
     	console.log(this.props.event);
 	}
@@ -64,7 +82,7 @@ export default class AppointmentEvent extends React.Component {
           	    </ModalBody>
           	    <ModalFooter>
 					{this.props.event.isUpcoming ? (
-						<Button color="primary" onClick={this.toggleNested}>Cancel Appointment</Button>
+						<Button color="primary" onClick={this.cancelAppointment}>Cancel Appointment</Button>
 						):(
 						<Button color="primary" onClick={this.toggleNested}>Request Refund</Button>
 						)}
