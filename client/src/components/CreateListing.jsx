@@ -38,7 +38,7 @@ class CreateListing extends React.Component {
 	    this.state.price = '$' + this.state.price;
 	}
 
-        fetch('http://localhost:5000/api/add-listing' , {
+        fetch('http://localhost:5000/api/listings' , {
             method: "POST",
 	    headers: {
                 'Content-type': 'application/json'

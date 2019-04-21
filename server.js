@@ -16,7 +16,7 @@ app.get('/api/listings', (req, res) => {
     res.json(listings);
 });
 
-app.post('/api/add-listing', (req, res) => {
+app.post('/api/listings', (req, res) => {
     console.log('Adding Listing');
     listing = req.body;
     modifyListings((data) => {
