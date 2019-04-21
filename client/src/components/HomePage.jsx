@@ -24,6 +24,13 @@ import navBar from "./Services";
 
 class HomePage extends React.Component {
 
+    constructor(props){
+        super(props);
+        // this.state = {
+        //     searchText: ""
+        // }
+        }
+
     style={
         image: {
           width: '247px',
@@ -74,11 +81,13 @@ class HomePage extends React.Component {
     state={
       services:{},
       service_ids:[],
+      searchText: ""
     };
+
     componentWillMount() {
-	fetch('http://localhost:5000/api/listings')
-	.then(response => response.json())
-	.then(data => this.setListings( data ));
+        fetch('http://localhost:5000/api/listings')
+        .then(response => response.json())
+        .then(data => this.setListings( data ));
     }
 
     componentDidMount() {
@@ -110,8 +119,11 @@ class HomePage extends React.Component {
 
     setListings(data) {
 	for(var i = 0; i < data.listings.length; i++) {
-           this.state.service_ids.push(data.listings[i].id);
-        }
+        // console.log(data.listings[i].title);
+        // if (this.state.searchText !== '' || data.listings[i].title.toLowerCase().startsWith(this.state.searchText.toLowerCase())) {
+            this.state.service_ids.push(data.listings[i].id)
+        // }
+    }
 	this.setState({services: data.listings});
     }
 
@@ -150,6 +162,11 @@ class HomePage extends React.Component {
             </Link>
         )
     }
+
+    getSearchText(){
+        return this.state.searchText;
+    }
+
     render() {
         return (
             <div>
@@ -162,9 +179,24 @@ class HomePage extends React.Component {
                     <Row form >
                         <Col md={12}>
                             <FormGroup>
-                                <Input type='text' name='Search' id='Search' placeholder='Search for service'  />
+                                <Input type='text' name='search' id='search' value={this.state.searchText}
+                                    onChange={event => {
+                                        this.setState({searchText: event.target.value})
+                                        $('.listingTitle').each(function () {
+                                            let listingTitle = $(this)[0].innerText.toLowerCase()
+                                            let searchText = $("#search").val().toLowerCase();
+                                            console.log(listingTitle);
+                                            console.log(searchText);
+                                            console.log(listingTitle.startsWith(searchText));
+                                            if (!listingTitle.startsWith(searchText)) {
+                                                $(this).parent().hide();
+                                            }
+                                            else{
+                                                $(this).parent().show();
+                                            }
+                                        });
+                                    }}/>
                             </FormGroup>
-
                         </Col>
 
                     </Row>
@@ -172,6 +204,7 @@ class HomePage extends React.Component {
                 </Container>
                 <Container >
                     <div style={{display:'inline-block'}}>
+                        {/*{ console.log(this.state.services) }*/}
                         {this.state.service_ids.map((row,i) => (
                             <div style={{display:'inline-block', marginRight:'45px'}}>
                                 {this.listing(row,i)}
