@@ -63,6 +63,7 @@ typings/
 # Other
 package-lock.json
 .idea/*
+*.swp
 
 # CampusList
 Data/listings.json

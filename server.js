@@ -50,6 +50,15 @@ function modifyListings(convertHandler) {
     });
 }
 
+// Setup listings database if not there
+function setupDB() {
+    fs = require('fs');
+    if (!fs.existsSync('Data/listings.json')) {
+	fs.copyFileSync('Data/sample.json', 'Data/listings.json');
+    }
+}
+setupDB();
+
 //Use Routes
 const port = process.env.PORT || 5000;
 app.listen(port, () => console.log('Server started on port ' + port));
