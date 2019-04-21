@@ -71,7 +71,7 @@ class Profile extends React.Component {
                     </div>
                     
                     <div style={{height: "50%", width: "100%", textAlign: "right"}}>
-                        <p style={{position: "relative", right: "0%", height: "75%", width: "50%",
+                        <p style={{textAlign: "left", position: "relative", right: "0%", height: "75%", width: "50%",
                             marginLeft: "25%", marginRight: "25%", resize: "none", disabled:'true'}} rows="3"
                                   cols="150" display="auto">
                             I'm a Software Engineer here at RIT. I'm usually in Golisano and I love participating in
