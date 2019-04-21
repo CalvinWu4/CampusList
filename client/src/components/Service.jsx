@@ -108,13 +108,14 @@ export default class Example extends React.Component {
             <div>
                 <h3 style={{color:'gray'}}>{this.state.listing['category']}</h3>
                 <h1>{this.state.listing['title']}</h1>
+                {parseFloat(this.state.listing['ratings'].length) > 0 ? (
                 <StarRatings starDimension="30px"
                         rating={parseFloat(this.state.listing['rating'])}
                          starRatedColor="#245CB3"
                         numberOfStars={5}
                         name='rating'
                              style={{clear:'both', display:'block'}}
-                />
+                />):(<label>No Reviews</label>)}
                 <div style={{display:'flex', flexDirection:'row'}}>
                 <h3 style={{position:'relative', top:'10px'}}>{this.state.listing['price']}</h3>
                 {this.props.location.parent!=='Services' ? (
