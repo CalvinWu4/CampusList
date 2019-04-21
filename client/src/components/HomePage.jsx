@@ -89,14 +89,14 @@ class HomePage extends React.Component {
                 navBarHeight = $(".navBar")[0].offsetHeight;
 
             $window.scroll(function () {
-                console.log($window.scrollTop());
                 if ($window.scrollTop() > navBarHeight) {
                     $sidebar.stop().animate({
                         marginTop: 0
                     }, 0);
-                } else {
+                }
+                else {
                     $sidebar.stop().animate({
-                        marginTop: navBarHeight
+                        marginTop: navBarHeight - $window.scrollTop()
                     }, 0);
                 }
             });
