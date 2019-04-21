@@ -26,7 +26,10 @@ class HomePage extends React.Component {
 
     constructor(props){
         super(props);
-    }
+        // this.state = {
+        //     searchText: ""
+        // }
+        }
 
     style={
         image: {
@@ -81,12 +84,6 @@ class HomePage extends React.Component {
       searchText: ""
     };
 
-    reloadDatabase(){
-            fetch('http://localhost:5000/api/listings')
-                .then(response => response.json())
-                .then(data => this.setListings( data ));
-    }
-
     componentWillMount() {
         fetch('http://localhost:5000/api/listings')
         .then(response => response.json())
@@ -116,17 +113,15 @@ class HomePage extends React.Component {
 
             // Prevent sidebar overlapping search bar
             $("#mainContainer").css( { marginLeft : 240 } );
-
-            // {console.log($('.listingTitle')[0].innerText)}
         });
     }
 
     setListings(data) {
 	for(var i = 0; i < data.listings.length; i++) {
-        console.log(data.listings[i].title);
-        if (this.state.searchText !== '' || data.listings[i].title.toLowerCase().startsWith(this.state.searchText.toLowerCase())) {
+        // console.log(data.listings[i].title);
+        // if (this.state.searchText !== '' || data.listings[i].title.toLowerCase().startsWith(this.state.searchText.toLowerCase())) {
             this.state.service_ids.push(data.listings[i].id)
-        }
+        // }
     }
 	this.setState({services: data.listings});
     }
@@ -166,6 +161,11 @@ class HomePage extends React.Component {
             </Link>
         )
     }
+
+    getSearchText(){
+        return this.state.searchText;
+    }
+
     render() {
         return (
             <div>
@@ -179,10 +179,24 @@ class HomePage extends React.Component {
                         <Col md={12}>
                             <FormGroup>
                                 <Input type='text' name='search' id='search' value={this.state.searchText}
-                                    onChange={event => this.setState({searchText: event.target.value})} />
-                                    {/*// onChange={this.reloadDatabase()}/>*/}
-                                    {/*<Button onClick={	this.reloadDatabase() } />*/}
-                                        </FormGroup>
+                                    onChange={event => {
+                                        this.setState({searchText: event.target.value})
+                                        $('.listingTitle').each(function () {
+                                            // console.log($(this)[0].innerText);
+                                            // console.log($("#search").val())
+                                            let listingTitle = $(this)[0].innerText.toLowerCase()
+                                            let searchText = $("#search").val().toLowerCase();
+                                            console.log(listingTitle);
+                                            console.log(searchText);
+                                            console.log(listingTitle.startsWith(searchText));
+                                            if (!listingTitle.startsWith(searchText)) {
+                                                $(this).parent().hide();
+                                            }
+                                        });
+                                        // console.log($(this)[0].innerText);
+                                        // console.log($("#search").val())
+                                    }}/>
+                            </FormGroup>
                         </Col>
 
                     </Row>
