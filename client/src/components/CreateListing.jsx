@@ -10,6 +10,7 @@ class CreateListing extends React.Component {
         super(props);
         this.createListing= this.createListing.bind(this);
         this.toggle = this.toggle.bind(this);
+	this.change = this.change.bind(this);
         this.changeValue = this.changeValue.bind(this);
         this.state = {
             dropdownOpen: false,
@@ -96,7 +97,16 @@ class CreateListing extends React.Component {
 
     validateFull = e => {
         if (
-            this.state.titleError || this.state.title===''|| this.state.price===''|| this.state.description===''|| this.state.priceError || this.state.dropDownValue === 'Select a category') {
+            this.state.titleError ||
+	    !this.state.title ||
+	    this.state.title===''||
+	    this.state.priceError ||
+	    !this.state.price ||
+	    this.state.price===''||
+	    !this.state.description ||
+	    this.state.description==='' ||
+	    this.state.dropDownValue === 'Select a category'
+	) {
             console.log('im invalid');
             this.setState({link: false});
         } else {
