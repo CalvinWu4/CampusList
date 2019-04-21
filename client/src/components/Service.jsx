@@ -31,9 +31,11 @@ export default class Example extends React.Component {
     this.toggle = this.toggle.bind(this);
     this.book = this.book.bind(this);
     this.removeService = this.removeService.bind(this);
+    this.dateChanged = this.dateChanged.bind(this);
     this.state = {
       activeTab: '1',
       showModal: false,
+      bookingDate: '2019-05-02T17:19:39.514Z',
       // check the type of your default values set 
       listing: {
         ratings: []
@@ -60,7 +62,24 @@ export default class Example extends React.Component {
     }
 
     book() {
-	window.location.replace('/appointments');
+	fetch('http://localhost:5000/api/appointments' , {
+            method: "POST",
+	    headers: {
+                'Content-type': 'application/json'
+            }, body: JSON.stringify({
+		id: this.state.listing.id,
+		date: new Date(this.state.bookingDate)
+	    })
+        })
+	.then(response => {
+	    // Go to My Appointments
+	    window.location.replace("/appointments");
+	})
+	.catch(err => { console.log(err) });
+    }
+
+    dateChanged(e) {
+	this.state.bookingDate = e.target.value;
     }
 
     /// Checkout liefcycle methods to find besttime to set listing (before render)
@@ -106,6 +125,7 @@ export default class Example extends React.Component {
                         name="date"
                         id="exampleDate"
                         placeholder="date placeholder"
+			onChange={ e => this.dateChanged(e) }
                         />
                         </FormGroup>
                         <FormGroup style={{marginLeft:'1em'}}>
