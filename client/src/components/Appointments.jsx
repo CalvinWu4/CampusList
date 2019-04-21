@@ -7,8 +7,6 @@ import moment from 'moment';
 import BigCalendar from 'react-big-calendar';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 
-import $ from 'jquery';
-
 const localizer = BigCalendar.momentLocalizer(moment)
 
 export default class Appointments extends React.Component {
@@ -68,8 +66,6 @@ export default class Appointments extends React.Component {
 	    	    views={["month"]}
 	    	    style={{ height: "80vh" }}
 	    	    components={{ event: AppointmentEvent }}
-				// eventPropGetter={event => ({className: 'category-' + event.category.toLowerCase()})}
-				// events={events}
 				eventPropGetter={
 					(event, start, end, isSelected) => {
 						let newStyle = {

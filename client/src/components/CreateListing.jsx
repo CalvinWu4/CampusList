@@ -33,7 +33,6 @@ class CreateListing extends React.Component {
         }
     }
     createListing(){
-        console.log('yurr');
         fetch('http://localhost:5000/api/listings' , {
             method: "POST",
             headers: {
