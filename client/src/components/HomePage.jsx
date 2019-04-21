@@ -24,13 +24,6 @@ import navBar from "./Services";
 
 class HomePage extends React.Component {
 
-    constructor(props){
-        super(props);
-        // this.state = {
-        //     searchText: ""
-        // }
-        }
-
     style={
         image: {
           width: '247px',
@@ -38,6 +31,8 @@ class HomePage extends React.Component {
           borderRadius: '30px',
           zIndex: -1,
           position: 'absolute',
+          left: 0,
+          bottom: 0
         },
         listing: {
             width: '250px',
@@ -111,19 +106,14 @@ class HomePage extends React.Component {
             });
             // Set sidebar to be expanded by default
             $("#sideNav > button").click();
-
-            // Prevent sidebar overlapping search bar
-            $("#mainContainer").css( { marginLeft : 240 } );
         });
     }
 
     setListings(data) {
 	for(var i = 0; i < data.listings.length; i++) {
-        // console.log(data.listings[i].title);
-        // if (this.state.searchText !== '' || data.listings[i].title.toLowerCase().startsWith(this.state.searchText.toLowerCase())) {
             this.state.service_ids.push(data.listings[i].id)
-        // }
     }
+
 	this.setState({services: data.listings});
     }
 
@@ -179,20 +169,17 @@ class HomePage extends React.Component {
                     <Row form >
                         <Col md={12}>
                             <FormGroup>
-                                <Input type='text' name='search' id='search' value={this.state.searchText}
+                                <Input type='text' name='search' id='search' placeholder='Search listings' value={this.state.searchText}
                                     onChange={event => {
                                         this.setState({searchText: event.target.value})
                                         $('.listingTitle').each(function () {
                                             let listingTitle = $(this)[0].innerText.toLowerCase()
                                             let searchText = $("#search").val().toLowerCase();
-                                            console.log(listingTitle);
-                                            console.log(searchText);
-                                            console.log(listingTitle.startsWith(searchText));
-                                            if (!listingTitle.startsWith(searchText)) {
-                                                $(this).parent().hide();
+                                            if (!listingTitle.includes(searchText)) {
+                                                $(this).parent().parent().parent().hide();
                                             }
                                             else{
-                                                $(this).parent().show();
+                                                $(this).parent().parent().parent().show();
                                             }
                                         });
                                     }}/>
@@ -203,10 +190,9 @@ class HomePage extends React.Component {
 
                 </Container>
                 <Container >
-                    <div style={{display:'inline-block'}}>
-                        {/*{ console.log(this.state.services) }*/}
+                    <div style={{display:'flex', flexWrap:'wrap', textAlign:'center'}}>
                         {this.state.service_ids.map((row,i) => (
-                            <div style={{display:'inline-block', marginRight:'45px'}}>
+                            <div style={{display:'flex', width:'33.33%', justifyContent:'center'}}>
                                 {this.listing(row,i)}
                             </div>
                         ))}

@@ -72,8 +72,6 @@ export default class Appointments extends React.Component {
 						let newStyle = {
 							backgroundColor: "#b3e1f7",
 							color: 'rgba(32,33,36,0.38)',
-							borderRadius: "0px",
-							border: "none"
 						};
 
 						if (event.isUpcoming){

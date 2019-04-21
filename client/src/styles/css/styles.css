@@ -151,3 +151,8 @@ input {
 .appointmentEventButton:hover {
     opacity: 0.5
 }
+
+/*Prevent sidebar overlapping search bar*/
+#mainContainer{
+    margin-left: 240px;
+}
