@@ -48,20 +48,15 @@ export default class Example extends React.Component {
 
     }
 
-    removeService(){
-	window.location.replace('/services');
-        //var data = require('../Data/sample');
-        //var removeService = this.state.listing['id'];
-        //for(var i = 0; i < data.listings.length; i++) {
-        //    if(data.listings[i].id===removeService){
-        //        data.listings.splice(i, 1);
-        //    }
-        //}
-        //console.log('im here');
-        //console.log(data);
-        //var fs = require('fs');
-        //fs.writeFile('../Data/sample', data, 'utf8');
-
+    removeService() {
+	fetch('http://localhost:5000/api/listings/' + this.state.listing['id'], {
+	    method: 'DELETE'
+	})
+	.then(response => {
+	    // Go back to My Services
+	    window.location.replace("/services");
+	})
+	.catch(err => { console.log(err) });
     }
 
     book() {
