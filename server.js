@@ -38,6 +38,19 @@ app.post('/api/listings', (req, res) => {
     res.sendStatus(201);
 });
 
+app.delete('/api/listings/:id', (req, res) => {
+    console.log('Removing Listing');
+    idToDelete = req.params.id;
+    modifyListings((data) => {
+	newListings = data.listings.filter(listing => { return listing.id != idToDelete });
+	newData = data
+	newData.listings = newListings
+	return newData
+    });
+
+    res.sendStatus(204);
+});
+
 // Call with a lambda that takes the object from the JSON file, modifies it in some way, and returns it again.
 function modifyListings(convertHandler) {
     fs = require('fs');
