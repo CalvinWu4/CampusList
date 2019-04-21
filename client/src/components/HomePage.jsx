@@ -102,9 +102,10 @@ class HomePage extends React.Component {
                     $sidebar.stop().animate({
                         marginTop: 0
                     }, 0);
-                } else {
+                }
+                else {
                     $sidebar.stop().animate({
-                        marginTop: navBarHeight
+                        marginTop: navBarHeight - $window.scrollTop()
                     }, 0);
                 }
             });

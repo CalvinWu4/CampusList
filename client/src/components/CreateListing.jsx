@@ -10,6 +10,7 @@ class CreateListing extends React.Component {
         super(props);
         this.createListing= this.createListing.bind(this);
         this.toggle = this.toggle.bind(this);
+	this.change = this.change.bind(this);
         this.changeValue = this.changeValue.bind(this);
         this.state = {
             dropdownOpen: false,
@@ -33,16 +34,34 @@ class CreateListing extends React.Component {
         }
     }
     createListing(){
+
+	if (!this.state.price.startsWith('$')) {
+	    this.state.price = '$' + this.state.price;
+	}
+        
         fetch('http://localhost:5000/api/listings' , {
             method: "POST",
-            headers: {
+	    headers: {
                 'Content-type': 'application/json'
-            },
-            body: JSON.stringify(this.state)
+            }, body: JSON.stringify({
+		category: [ this.state.dropDownValue ],
+		picture: 'custom-service.jpg',
+		creator: '',
+		title: this.state.title,
+		description: this.state.description,
+		price: this.state.price,
+		rating: '3.0',
+		ratings: [],
+		appointments: []
+	    })
         })
-            .then((result) => result.json())
-            .then((info) => { console.log(info); })
+	.then(response => {
+	    // Go home
+	    window.location.replace("/homepage");
+	})
+	.catch(err => { console.log(err) });
     }
+
     change = e => {
         this.setState({
             [e.target.name]: e.target.value
@@ -83,7 +102,16 @@ class CreateListing extends React.Component {
 
     validateFull = e => {
         if (
-            this.state.titleError || this.state.title===''|| this.state.price===''|| this.state.description===''|| this.state.priceError || this.state.dropDownValue === 'Select a category') {
+            this.state.titleError ||
+	    !this.state.title ||
+	    this.state.title===''||
+	    this.state.priceError ||
+	    !this.state.price ||
+	    this.state.price===''||
+	    !this.state.description ||
+	    this.state.description==='' ||
+	    this.state.dropDownValue === 'Select a category'
+	) {
             console.log('im invalid');
             this.setState({link: false});
         } else {
@@ -180,7 +208,7 @@ class CreateListing extends React.Component {
                                     <div><b style={{fontSize:'16px', marginRight: '5px',fontFamily:'Lato', display:'inline-block'}}>Description: </b>
                                         {this.state.description}
                                     </div>
-                            </div>, href: '/homepage',disabled: !this.state.link,buttonColor: 'primary', display: 'inline-block',buttonStyle:{float: "right", position: "relative"}}}/>
+                            </div>, onClick: this.createListing, disabled: !this.state.link,buttonColor: 'primary', display: 'inline-block',buttonStyle:{float: "right", position: "relative"}}}/>
 
                     </Form>
                 </div>

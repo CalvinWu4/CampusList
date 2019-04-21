@@ -29,15 +29,18 @@ export default class Example extends React.Component {
     super(props);
 
     this.toggle = this.toggle.bind(this);
+    this.book = this.book.bind(this);
+    this.removeService = this.removeService.bind(this);
+    this.dateChanged = this.dateChanged.bind(this);
     this.state = {
       activeTab: '1',
       showModal: false,
+      bookingDate: '2019-05-02T17:19:39.514Z',
       // check the type of your default values set 
       listing: {
         ratings: []
       }
     };
-      this.toggle = this.toggle.bind(this);
   }
     toggle(e) {
         e.stopPropagation();
@@ -46,20 +49,39 @@ export default class Example extends React.Component {
         }));
 
     }
-    removeService(){
-        //var data = require('../Data/sample');
-        //var removeService = this.state.listing['id'];
-        //for(var i = 0; i < data.listings.length; i++) {
-        //    if(data.listings[i].id===removeService){
-        //        data.listings.splice(i, 1);
-        //    }
-        //}
-        //console.log('im here');
-        //console.log(data);
-        //var fs = require('fs');
-        //fs.writeFile('../Data/sample', data, 'utf8');
 
+    removeService() {
+	fetch('http://localhost:5000/api/listings/' + this.state.listing['id'], {
+	    method: 'DELETE'
+	})
+	.then(response => {
+	    // Go back to My Services
+	    window.location.replace("/services");
+	})
+	.catch(err => { console.log(err) });
     }
+
+    book() {
+	fetch('http://localhost:5000/api/appointments' , {
+            method: "POST",
+	    headers: {
+                'Content-type': 'application/json'
+            }, body: JSON.stringify({
+		id: this.state.listing.id,
+		date: new Date(this.state.bookingDate)
+	    })
+        })
+	.then(response => {
+	    // Go to My Appointments
+	    window.location.replace("/appointments");
+	})
+	.catch(err => { console.log(err) });
+    }
+
+    dateChanged(e) {
+	this.state.bookingDate = e.target.value;
+    }
+
     /// Checkout liefcycle methods to find besttime to set listing (before render)
     componentWillMount() {
         if (this.props.location.state) {
@@ -103,6 +125,7 @@ export default class Example extends React.Component {
                         name="date"
                         id="exampleDate"
                         placeholder="date placeholder"
+			onChange={ e => this.dateChanged(e) }
                         />
                         </FormGroup>
                         <FormGroup style={{marginLeft:'1em'}}>
@@ -114,7 +137,7 @@ export default class Example extends React.Component {
                         placeholder="time placeholder"
                         />
                         </FormGroup>
-                        </Row>, href: '/appointments',buttonColor: 'primary', buttonStyle:{ marginTop:'2%', marginLeft:'1em'}}}/>
+                        </Row>, onClick: this.book,buttonColor: 'primary', buttonStyle:{ marginTop:'2%', marginLeft:'1em'}}}/>
 
                 ) : (
                     <div> </div>
@@ -171,7 +194,7 @@ export default class Example extends React.Component {
         </TabContent>
 
           {this.props.location.parent==='Services' ? (
-              <ModalComponent state={{title:'Delete Service', body:'Are you sure you want to delete this service', href: '/services',buttonColor: 'danger', buttonStyle:{ marginLeft:'67%', marginTop:'1%'}}}/>
+              <ModalComponent state={{title:'Delete Service', body:'Are you sure you want to delete this service', onClick: this.removeService, buttonColor: 'danger', buttonStyle:{ marginLeft:'67%', marginTop:'1%'}}}/>
 
               ) : (
               <div> </div>
