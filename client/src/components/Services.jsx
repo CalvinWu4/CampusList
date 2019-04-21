@@ -123,7 +123,7 @@ class Services extends React.Component {
                                              starRatedColor="#245CB3"
                                              numberOfStars={5}
                                              name='rating'
-                                />):(<label>No Reviews</label>)}
+                                />):(<label>No Ratings</label>)}
                         </div>
                     </div>
                 </div>

@@ -115,7 +115,7 @@ export default class Example extends React.Component {
                         numberOfStars={5}
                         name='rating'
                              style={{clear:'both', display:'block'}}
-                />):(<label>No Reviews</label>)}
+                />):(<label>No Ratings</label>)}
                 <div style={{display:'flex', flexDirection:'row'}}>
                 <h3 style={{position:'relative', top:'10px'}}>{this.state.listing['price']}</h3>
                 {this.props.location.parent!=='Services' ? (
@@ -160,7 +160,7 @@ export default class Example extends React.Component {
               className={classnames({ active: this.state.activeTab === '2' })}
               onClick={() => { this.toggle('2'); }} style={{border:'solid'}}
             >
-              Reviews
+              Ratings
             </NavLink>
           </NavItem>
 
