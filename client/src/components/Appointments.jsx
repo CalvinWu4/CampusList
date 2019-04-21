@@ -45,7 +45,8 @@ export default class Appointments extends React.Component {
 		    title: listing.title,
 		    start: startDate,
 		    end: new Date(startDate.getTime() + 1800000),
-			isUpcoming: startDate > new Date()
+		    isUpcoming: startDate > new Date(),
+		    listingId: listing.id
 		});
 	    }
 	}
