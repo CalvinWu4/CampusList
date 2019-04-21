@@ -182,8 +182,6 @@ class HomePage extends React.Component {
                                     onChange={event => {
                                         this.setState({searchText: event.target.value})
                                         $('.listingTitle').each(function () {
-                                            // console.log($(this)[0].innerText);
-                                            // console.log($("#search").val())
                                             let listingTitle = $(this)[0].innerText.toLowerCase()
                                             let searchText = $("#search").val().toLowerCase();
                                             console.log(listingTitle);
@@ -192,9 +190,10 @@ class HomePage extends React.Component {
                                             if (!listingTitle.startsWith(searchText)) {
                                                 $(this).parent().hide();
                                             }
+                                            else{
+                                                $(this).parent().show();
+                                            }
                                         });
-                                        // console.log($(this)[0].innerText);
-                                        // console.log($("#search").val())
                                     }}/>
                             </FormGroup>
                         </Col>
