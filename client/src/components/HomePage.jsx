@@ -10,7 +10,7 @@ import {
     FormGroup,
     Input,
     InputGroup,
-    Label,
+    Label, ModalFooter,
     Row
 } from 'reactstrap';
 import {Link} from 'react-router-dom';
@@ -139,14 +139,14 @@ class HomePage extends React.Component {
                     {listings['description']}
                     </div>
                     <div style={{  position:'absolute', marginLeft:'auto', marginRight:'auto', bottom:5, left:22}}>
-                    <StarRatings starDimension="30px"
-                        rating={parseFloat(listings['rating'])}
-                        starRatedColor="#245CB3"
-                        numberOfStars={5}
-                        name='rating'
-                    />
+                        {parseFloat(listings['ratings'].length) > 0 ? (
+                        <StarRatings starDimension="30px"
+                            rating={parseFloat(listings['rating'])}
+                            starRatedColor="#245CB3"
+                            numberOfStars={5}
+                            name='rating'
+                        />):(<label>No Ratings</label>)}
                     </div>
-
                 </div>
             </div>
             </Link>

@@ -50,7 +50,7 @@ class CreateListing extends React.Component {
 		title: this.state.title,
 		description: this.state.description,
 		price: this.state.price,
-		rating: '3.0',
+		rating: '0.0',
 		ratings: [],
 		appointments: []
 	    })
