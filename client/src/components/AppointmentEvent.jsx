@@ -37,8 +37,9 @@ export default class AppointmentEvent extends React.Component {
             headers: {
                 'Content-type': 'application/json'
             }, body: JSON.stringify({
-                "rating": this.state.rating,
-                "review": this.state.description
+		listingId: this.props.event.listingId,
+                rating: this.state.rating,
+                review: this.state.description
             }
             )
         })
