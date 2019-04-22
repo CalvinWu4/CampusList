@@ -34,6 +34,7 @@ export default class Example extends React.Component {
     this.book = this.book.bind(this);
     this.removeService = this.removeService.bind(this);
     this.dateChanged = this.dateChanged.bind(this);
+
     this.state = {
         props :{
             center: {
@@ -42,10 +43,13 @@ export default class Example extends React.Component {
             },
             zoom: 11
         },
+    this.timeChanged = this.timeChanged.bind(this);
       activeTab: '1',
       showModal: false,
       bookingDate: '2019-05-02T17:19:39.514Z',
-      // check the type of your default values set 
+        bookingTime: '17:19:39',
+
+        // check the type of your default values set
       listing: {
         ratings: []
       },
@@ -89,8 +93,30 @@ export default class Example extends React.Component {
 	.catch(err => { console.log(err) });
     }
 
+    timeChanged(e){
+        this.state.bookingTime = e.target.value;
+        const timeString = this.state.bookingTime;
+        const date = new Date(this.state.bookingDate)
+        const year = date.getFullYear();
+        const month = date.getMonth() + 1; // Jan is 0, dec is 11
+        const day = date.getDate();
+        const dateString = '' + year + '-' + month + '-' + day;
+        const combined = new Date(dateString + ' ' + timeString);
+        this.state.bookingDate = (new Date(combined));
+        console.log(this.state.bookingDate);
+
+    }
     dateChanged(e) {
-	this.state.bookingDate = e.target.value;
+	    this.state.bookingDate = e.target.value;
+        const timeString = this.state.bookingTime;
+        const date = new Date(this.state.bookingDate)
+        const year = date.getFullYear();
+        const month = date.getMonth() + 1; // Jan is 0, dec is 11
+        const day = date.getDate() + 1;
+        const dateString = '' + year + '-' + month + '-' + day;
+        const combined = new Date(dateString + ' ' + timeString);
+        this.state.bookingDate = (new Date(combined));
+        console.log(this.state.bookingDate);
     }
 
     /// Checkout liefcycle methods to find besttime to set listing (before render)
@@ -122,41 +148,37 @@ export default class Example extends React.Component {
             <div>
                 <h3 style={{color:'gray'}}>{this.state.listing['category']}</h3>
                 <h1>{this.state.listing['title']}</h1>
+                {parseFloat(this.state.listing['ratings'].length) > 0 ? (
                 <StarRatings starDimension="30px"
                         rating={parseFloat(this.state.listing['rating'])}
                          starRatedColor="#245CB3"
                         numberOfStars={5}
                         name='rating'
                              style={{clear:'both', display:'block'}}
-                />
-                <div style={{display:'flex', flexDirection:'row'}}>
-                <h3 style={{position:'relative', top:'10px'}}>{this.state.listing['price']}</h3>
+                />):(<h5 style={{marginBottom: 0}}>No Ratings</h5>)}
+                <h3 style={{position:'relative', marginTop:'0.5rem'}}>{this.state.listing['price']}</h3>
                 {this.props.location.parent!=='Services' ? (
                     <ModalComponent state={{title:'Book Appointment', body:<Row id='appointmentsRow' style={{justifyContent:'center'}}>
                         <FormGroup style={{marginRight:'1em'}}  >
                         <Input
                             type="date"
-                        name="date"
-                        id="exampleDate"
-                        placeholder="date placeholder"
-			onChange={ e => this.dateChanged(e) }
+                            name="date"
+                            id="exampleDate"
+                            placeholder="date placeholder"
+                            onChange={ e => this.dateChanged(e) }
                         />
                         </FormGroup>
                         <FormGroup style={{marginLeft:'1em'}}>
                         <Input
-
                             type="time"
-                        name="time"
-                        id="exampleTime"
-                        placeholder="time placeholder"
+                            name="time"
+                            id="exampleTime"
+                            placeholder="time placeholder"
+                            onChange={ e => this.timeChanged(e) }
                         />
                         </FormGroup>
-                        </Row>, onClick: this.book,buttonColor: 'primary', buttonStyle:{ marginTop:'2%', marginLeft:'1em'}}}/>
-
-                ) : (
-                    <div> </div>
-                )}
-            </div>
+                        </Row>, onClick: this.book,buttonColor: 'primary'}}/>
+                ) : ('')}
             </div>
         </div>
         <Nav tabs style={{width:'50%', marginRight:'auto', marginLeft:'auto'}} >
@@ -168,14 +190,15 @@ export default class Example extends React.Component {
               Description
             </NavLink>
           </NavItem>
-          <NavItem>
+            {parseFloat(this.state.listing['ratings'].length) > 0 ? (
+                <NavItem>
             <NavLink
               className={classnames({ active: this.state.activeTab === '2' })}
               onClick={() => { this.toggle('2'); }} style={{border:'solid'}}
             >
-              Reviews
+              Ratings
             </NavLink>
-          </NavItem>
+          </NavItem>):('')}
 
         </Nav>
         <TabContent activeTab={this.state.activeTab} style={{width:'50%', height:'250px',overflow:'auto', overflowX:'hidden', marginRight:'auto', marginLeft:'auto', border:'solid'}}>
