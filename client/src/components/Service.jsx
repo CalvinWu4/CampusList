@@ -32,11 +32,14 @@ export default class Example extends React.Component {
     this.book = this.book.bind(this);
     this.removeService = this.removeService.bind(this);
     this.dateChanged = this.dateChanged.bind(this);
-    this.state = {
+    this.timeChanged = this.timeChanged.bind(this);
+      this.state = {
       activeTab: '1',
       showModal: false,
       bookingDate: '2019-05-02T17:19:39.514Z',
-      // check the type of your default values set 
+        bookingTime: '17:19:39',
+
+        // check the type of your default values set
       listing: {
         ratings: []
       }
@@ -78,8 +81,30 @@ export default class Example extends React.Component {
 	.catch(err => { console.log(err) });
     }
 
+    timeChanged(e){
+        this.state.bookingTime = e.target.value;
+        const timeString = this.state.bookingTime;
+        const date = new Date(this.state.bookingDate)
+        const year = date.getFullYear();
+        const month = date.getMonth() + 1; // Jan is 0, dec is 11
+        const day = date.getDate();
+        const dateString = '' + year + '-' + month + '-' + day;
+        const combined = new Date(dateString + ' ' + timeString);
+        this.state.bookingDate = (new Date(combined));
+        console.log(this.state.bookingDate);
+
+    }
     dateChanged(e) {
-	this.state.bookingDate = e.target.value;
+	    this.state.bookingDate = e.target.value;
+        const timeString = this.state.bookingTime;
+        const date = new Date(this.state.bookingDate)
+        const year = date.getFullYear();
+        const month = date.getMonth() + 1; // Jan is 0, dec is 11
+        const day = date.getDate() + 1;
+        const dateString = '' + year + '-' + month + '-' + day;
+        const combined = new Date(dateString + ' ' + timeString);
+        this.state.bookingDate = (new Date(combined));
+        console.log(this.state.bookingDate);
     }
 
     /// Checkout liefcycle methods to find besttime to set listing (before render)
@@ -134,6 +159,7 @@ export default class Example extends React.Component {
                             name="time"
                             id="exampleTime"
                             placeholder="time placeholder"
+                            onChange={ e => this.timeChanged(e) }
                         />
                         </FormGroup>
                         </Row>, onClick: this.book,buttonColor: 'primary'}}/>
