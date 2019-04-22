@@ -155,14 +155,15 @@ export default class Example extends React.Component {
               Description
             </NavLink>
           </NavItem>
-          <NavItem>
+            {parseFloat(this.state.listing['ratings'].length) > 0 ? (
+                <NavItem>
             <NavLink
               className={classnames({ active: this.state.activeTab === '2' })}
               onClick={() => { this.toggle('2'); }} style={{border:'solid'}}
             >
               Ratings
             </NavLink>
-          </NavItem>
+          </NavItem>):('')}
 
         </Nav>
         <TabContent activeTab={this.state.activeTab} style={{width:'50%', height:'250px',overflow:'auto', overflowX:'hidden', marginRight:'auto', marginLeft:'auto', border:'solid'}}>
