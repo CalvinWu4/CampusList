@@ -136,11 +136,11 @@ export default class AppointmentEvent extends React.Component {
 			<b>End: </b>{this.props.event.end.toLocaleString()}<br/>
           	    </ModalBody>
           	    <ModalFooter>
-					{this.props.event.isUpcoming ? (
-						<Button color="primary" onClick={this.cancelAppointment}>Cancel Appointment</Button>
-						):(
-						<Button color="secondary" onClick={this.toggleNested}>Request Refund</Button>
-						)}
+                    {this.props.event.isUpcoming ? (
+                        <label hidden={true}/>
+                    ):(
+                        <Button color="primary"  onClick={this.toggleNestedFeedback}>Leave Feedback</Button>
+                    )}
 
 						<Modal isOpen={this.state.nestedModal} toggle={this.toggleNested} onClosed={this.state.closeAll ? this.toggle : undefined}>
                             <ModalHeader>Request Refund</ModalHeader>
@@ -153,10 +153,11 @@ export default class AppointmentEvent extends React.Component {
                                 <Button color="secondary" onClick={this.toggleAll}>Cancel</Button>
                             </ModalFooter>
 			            </Modal>
+
                     {this.props.event.isUpcoming ? (
-                    	<label hidden={true}/>
+                        <Button color="primary" onClick={this.cancelAppointment}>Cancel Appointment</Button>
                     ):(
-                        <Button color="primary"  onClick={this.toggleNestedFeedback}>Leave Feedback</Button>
+                        <Button color="secondary" onClick={this.toggleNested}>Request Refund</Button>
                     )}
                     <Modal isOpen={this.state.nestedFeedback} toggle={this.toggleNestedFeedback} onClosed={this.state.closeAll ? this.toggle : undefined}>
                         <ModalHeader>Leave Feedback</ModalHeader>
