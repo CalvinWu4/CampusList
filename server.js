@@ -38,6 +38,29 @@ app.post('/api/listings', (req, res) => {
     res.sendStatus(201);
 });
 
+app.post('/api/listings/rating', (req, res) => {
+    console.log('Adding Listing rating');
+    listing = req.body;
+    modifyListings((data) => {
+        // Determine ID
+        var maxId = -1;
+        for (i = 0; i < data.listings.length; i++) {
+            id = data.listings[i].id;
+            if (id > maxId) {
+                maxId = id;
+            }
+        }
+        listing['id'] = maxId + 1;
+
+        newData = data;
+        newData.listings.push(listing);
+        return newData;
+    });
+
+    res.sendStatus(201);
+});
+
+
 app.delete('/api/listings/:id', (req, res) => {
     console.log('Removing Listing');
     idToDelete = req.params.id;
