@@ -132,7 +132,7 @@ export default class AppointmentEvent extends React.Component {
           	    <ModalHeader toggle={this.toggle}>Appointment Details</ModalHeader>
                     <ModalBody>
 			<b>Title: </b> {this.props.event.title} <br/>
-			<b>Start: </b> {this.props.event.end.toLocaleString()}<br/>
+			<b>Start: </b> {this.props.event.start.toLocaleString()}<br/>
 			<b>End: </b>{this.props.event.end.toLocaleString()}<br/>
           	    </ModalBody>
           	    <ModalFooter>
