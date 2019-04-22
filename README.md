@@ -2,11 +2,21 @@
 Students can make appointments for services offered by other students.
 
 # Installation
-First, ensure `npm` (Node Package Manager) is installed on your machine. 
+Ensure `npm` (Node Package Manager) is installed on your machine. 
+
 If not, install it from here: https://nodejs.org/en/download/
-Then:
+
+Ensure Google Chrome is installed on your machine. 
+
+If not, install it from here: https://www.google.com/chrome/
+
+If you have:
 - Windows: Run `start.bat`
-- Linux & macOS: Run `start.sh`
+- Linux or macOS: Run `start.sh`
+
+The application will launch the website on your default browser.
+
+If Chrome is not your default browser, launch Chrome and navigate to http://localhost:3000/ to view the website on its ideal browser.
 
 # Features
 - See offered services on Home page
