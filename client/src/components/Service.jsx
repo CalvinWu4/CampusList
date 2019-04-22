@@ -34,7 +34,7 @@ export default class Example extends React.Component {
     this.book = this.book.bind(this);
     this.removeService = this.removeService.bind(this);
     this.dateChanged = this.dateChanged.bind(this);
-
+      this.timeChanged = this.timeChanged.bind(this);
     this.state = {
         props :{
             center: {
@@ -43,7 +43,6 @@ export default class Example extends React.Component {
             },
             zoom: 11
         },
-    this.timeChanged = this.timeChanged.bind(this);
       activeTab: '1',
       showModal: false,
       bookingDate: '2019-05-02T17:19:39.514Z',
