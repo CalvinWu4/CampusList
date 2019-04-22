@@ -23,6 +23,8 @@ import Navbar from './NavigationBar';
 import StarRatings from 'react-star-ratings';
 import style from '../styles/css/styles.css';
 import ModalComponent from "./ModalComponent";
+import GoogleMapReact from 'google-map-react';
+const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
 export default class Example extends React.Component {
   constructor(props) {
@@ -32,8 +34,16 @@ export default class Example extends React.Component {
     this.book = this.book.bind(this);
     this.removeService = this.removeService.bind(this);
     this.dateChanged = this.dateChanged.bind(this);
+
+    this.state = {
+        props :{
+            center: {
+                lat: 59.95,
+                lng: 30.33
+            },
+            zoom: 11
+        },
     this.timeChanged = this.timeChanged.bind(this);
-      this.state = {
       activeTab: '1',
       showModal: false,
       bookingDate: '2019-05-02T17:19:39.514Z',
@@ -42,7 +52,8 @@ export default class Example extends React.Component {
         // check the type of your default values set
       listing: {
         ratings: []
-      }
+      },
+        apiKey:''
     };
   }
     toggle(e) {
@@ -52,6 +63,7 @@ export default class Example extends React.Component {
         }));
 
     }
+
 
     removeService() {
 	fetch('http://localhost:5000/api/listings/' + this.state.listing['id'], {
@@ -114,6 +126,9 @@ export default class Example extends React.Component {
             // Proptypes to enforce typing
             this.setState({listing:this.props.location.state})
         }
+        fetch('http://localhost:5000/api/credentials')
+            .then(response => response.json())
+            .then(data => this.setState( {apiKey: data['googleMaps']}));
 
     }
 
@@ -189,8 +204,20 @@ export default class Example extends React.Component {
         <TabContent activeTab={this.state.activeTab} style={{width:'50%', height:'250px',overflow:'auto', overflowX:'hidden', marginRight:'auto', marginLeft:'auto', border:'solid'}}>
           <TabPane tabId="1">
             <Row>
-                <p style={{margin:'3%', width: '65%', fontFamily:'Lato', fontSize:'20px'}}>{this.state.listing['description']}</p>
-                <img style={{height:'10%', width:'20%', margin:'2.75%'}} src={require("../styles/images/map.png")}/>
+                <p style={{margin:'3%', width: '65%', fontFamily:'Lato', fontSize:'20px', display:'inline-block'}}>{this.state.listing['description']}</p>
+                <div style={{ height: '28vh', width: '25%', float:'right', display:'inline-block', marginTop:'30px'}}>
+                    <GoogleMapReact
+                        bootstrapURLKeys={{ key:this.state.apiKey }}
+                        defaultCenter={this.state.props.center}
+                        defaultZoom={this.state.props.zoom}
+                    >
+                        <AnyReactComponent
+                            lat={100.0846}
+                            lng={200.6743}
+                            text="My Marker"
+                        />
+                    </GoogleMapReact>
+                </div>
             </Row>
           </TabPane>
            <TabPane tabId="2">

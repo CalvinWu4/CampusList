@@ -15,7 +15,12 @@ app.get('/api/listings', (req, res) => {
     listings = JSON.parse(data);
     res.json(listings);
 });
-
+app.get('/api/credentials', (req, res) => {
+    fs = require('fs');
+    data = fs.readFileSync('Data/credentials.json');
+    credentials = JSON.parse(data);
+    res.json(credentials);
+});
 app.post('/api/listings', (req, res) => {
     console.log('Adding Listing');
     listing = req.body;

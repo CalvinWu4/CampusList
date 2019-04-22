@@ -156,3 +156,7 @@ input {
 #mainContainer{
     margin-left: 240px;
 }
+
+#root > div > div > div.tab-content > div.tab-pane.active > div > div{
+    margin-top: 3%;
+}
