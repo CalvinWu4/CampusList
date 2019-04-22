@@ -38,6 +38,30 @@ app.post('/api/listings', (req, res) => {
     res.sendStatus(201);
 });
 
+app.post('/api/listings/rating', (req, res) => {
+    console.log('Adding Listing rating');
+    listingId = req.body.listingId;
+    rating = req.body.rating;
+    review = req.body.review;
+    modifyListings((data) => {
+	index = data.listings.findIndex(listing => { return listing.id == listingId });
+	newData = data
+	newData.listings[index].ratings.push({
+	    rating: rating,
+	    review: review
+	});
+
+	sum = newData.listings[index].ratings.map(entry => { return parseFloat(entry.rating) }).reduce((total, next) => { return total + next }, 0);
+	avg = sum / newData.listings[index].ratings.length;
+	newData.listings[index].rating = "" + avg.toFixed(2);
+	
+	return newData;
+    });
+
+    res.sendStatus(201);
+});
+
+
 app.delete('/api/listings/:id', (req, res) => {
     console.log('Removing Listing');
     idToDelete = req.params.id;
