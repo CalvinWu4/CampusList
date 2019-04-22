@@ -136,15 +136,16 @@ class Services extends React.Component {
                 <Navbar/>
 
 
-                <Container  >
+                <Container style={{marginTop:'2%'}}>
                     <div style={{textAlign:'center'}} >
-                    <h2 >My Listings</h2>
+                    <h2 style={{display:'inline-block'}}>My Listings</h2>
 
-                <Button title="Add a service" href='/createlisting' color="success" style={{ borderRadius:100,width:'40px', height:'40px', padding:0, float:'right', }}><FontAwesomeIcon icon="plus-circle" style={{width:'35px', height:'37px'}}/></Button>{' '}
+                <Button title="Add a service" href='/createlisting' color="success" style={{ borderRadius:100,width:'40px', height:'40px', padding:0, float:'right', display:'inline-block'}}>
+                    <FontAwesomeIcon icon="plus-circle" style={{width:'35px', height:'37px'}}/></Button>{' '}
                     </div>
-                <div style={{display:'inline-block'}}>
+                    <div style={{display:'flex', flexWrap:'wrap', textAlign:'center'}}>
                         {this.state.service_ids.map((row,i) => (
-                            <div style={{display:'inline-block', marginRight:'45px'}}>
+                            <div style={{display:'flex', width:'33.33%', justifyContent:'center'}}>
                                 {this.listing(row,i)}
                             </div>
                         ))}

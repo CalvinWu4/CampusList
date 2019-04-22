@@ -153,10 +153,6 @@ class HomePage extends React.Component {
         )
     }
 
-    getSearchText(){
-        return this.state.searchText;
-    }
-
     render() {
         return (
             <div>
