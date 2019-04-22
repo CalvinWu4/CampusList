@@ -140,7 +140,7 @@ class HomePage extends React.Component {
                     </div>
                     <div style={{  position:'absolute', marginLeft:'auto', marginRight:'auto', bottom:5, left:22}}>
                         {parseFloat(listings['ratings'].length) > 0 ? (
-                        <StarRatings starDimension="30px"
+                        <StarRatings style={{marginBottom: '5em'}} starDimension="30px"
                             rating={parseFloat(listings['rating'])}
                             starRatedColor="#245CB3"
                             numberOfStars={5}

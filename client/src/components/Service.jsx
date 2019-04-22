@@ -115,35 +115,29 @@ export default class Example extends React.Component {
                         numberOfStars={5}
                         name='rating'
                              style={{clear:'both', display:'block'}}
-                />):(<label>No Ratings</label>)}
-                <div style={{display:'flex', flexDirection:'row'}}>
-                <h3 style={{position:'relative', top:'10px'}}>{this.state.listing['price']}</h3>
+                />):(<h5 style={{marginBottom: 0}}>No Ratings</h5>)}
+                <h3 style={{position:'relative', marginTop:'0.5rem'}}>{this.state.listing['price']}</h3>
                 {this.props.location.parent!=='Services' ? (
                     <ModalComponent state={{title:'Book Appointment', body:<Row id='appointmentsRow' style={{justifyContent:'center'}}>
                         <FormGroup style={{marginRight:'1em'}}  >
                         <Input
                             type="date"
-                        name="date"
-                        id="exampleDate"
-                        placeholder="date placeholder"
-			onChange={ e => this.dateChanged(e) }
+                            name="date"
+                            id="exampleDate"
+                            placeholder="date placeholder"
+                            onChange={ e => this.dateChanged(e) }
                         />
                         </FormGroup>
                         <FormGroup style={{marginLeft:'1em'}}>
                         <Input
-
                             type="time"
-                        name="time"
-                        id="exampleTime"
-                        placeholder="time placeholder"
+                            name="time"
+                            id="exampleTime"
+                            placeholder="time placeholder"
                         />
                         </FormGroup>
-                        </Row>, onClick: this.book,buttonColor: 'primary', buttonStyle:{ marginTop:'2%', marginLeft:'1em'}}}/>
-
-                ) : (
-                    <div> </div>
-                )}
-            </div>
+                        </Row>, onClick: this.book,buttonColor: 'primary'}}/>
+                ) : ('')}
             </div>
         </div>
         <Nav tabs style={{width:'50%', marginRight:'auto', marginLeft:'auto'}} >
