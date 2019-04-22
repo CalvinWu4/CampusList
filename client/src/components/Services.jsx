@@ -116,15 +116,19 @@ class Services extends React.Component {
                         <div style={{display:'block', clear:'both'}}>
                             {listings['description']}
                         </div>
-                        <div style={{  position:'absolute', marginLeft:'auto', marginRight:'auto', bottom:5, left:22}}>
                             {parseFloat(listings['ratings'].length) > 0 ? (
-                                <StarRatings starDimension="30px"
-                                             rating={parseFloat(listings['rating'])}
-                                             starRatedColor="#245CB3"
-                                             numberOfStars={5}
-                                             name='rating'
-                                />):(<label>No Ratings</label>)}
-                        </div>
+                                <div style={{  position:'absolute', marginLeft:'auto', marginRight:'auto', bottom:5, left:22}}>
+                                    <StarRatings starDimension="30px"
+                                                 rating={parseFloat(listings['rating'])}
+                                                 starRatedColor="#245CB3"
+                                                 numberOfStars={5}
+                                                 name='rating'
+                                    />
+                                </div>
+                            ):(
+                                <div style={{  position:'absolute', marginLeft:'auto', marginRight:'auto', bottom:5, left:'33.33%'}}>
+                                    <label>No Ratings</label>
+                                </div>)}
                     </div>
                 </div>
             </Link>
