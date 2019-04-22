@@ -76,7 +76,7 @@ class HomePage extends React.Component {
     state={
       services:{},
       service_ids:[],
-      searchText: ""
+      searchText: "",
     };
 
     componentWillMount() {
@@ -138,23 +138,24 @@ class HomePage extends React.Component {
                     <div style={{display:'block', clear:'both'}}>
                     {listings['description']}
                     </div>
-                    <div style={{  position:'absolute', marginLeft:'auto', marginRight:'auto', bottom:5, left:22}}>
                         {parseFloat(listings['ratings'].length) > 0 ? (
-                        <StarRatings style={{marginBottom: '5em'}} starDimension="30px"
-                            rating={parseFloat(listings['rating'])}
-                            starRatedColor="#245CB3"
-                            numberOfStars={5}
-                            name='rating'
-                        />):(<label>No Ratings</label>)}
-                    </div>
+                            <div style={{position:'absolute', marginLeft:'auto', marginRight:'auto', bottom:5, left:22}}>
+                                <StarRatings starDimension="30px"
+                                rating={parseFloat(listings['rating'])}
+                                starRatedColor="#245CB3"
+                                numberOfStars={5}
+                                name='rating'
+                                />
+                            </div>
+                        ):(
+                            <div style={{position:'absolute', marginLeft:'auto', marginRight:'auto', bottom:5, left:'33.33%'}}>
+                                <label style={{left:'33.33%'}}>No Ratings</label>
+                            </div>
+                        )}
                 </div>
             </div>
             </Link>
         )
-    }
-
-    getSearchText(){
-        return this.state.searchText;
     }
 
     render() {
@@ -181,6 +182,13 @@ class HomePage extends React.Component {
                                             else{
                                                 $(this).parent().parent().parent().show();
                                             }
+                                            if($('#services').children(':visible').length === 0) {
+                                                // action when all are hidden
+                                                $('#noResults').show();
+                                            }
+                                            else{
+                                                $('#noResults').hide();
+                                            }
                                         });
                                     }}/>
                             </FormGroup>
@@ -190,12 +198,13 @@ class HomePage extends React.Component {
 
                 </Container>
                 <Container >
-                    <div style={{display:'flex', flexWrap:'wrap', textAlign:'center'}}>
+                    <div id='services' style={{display:'flex', flexWrap:'wrap', textAlign:'center'}}>
                         {this.state.service_ids.map((row,i) => (
                             <div style={{display:'flex', width:'33.33%', justifyContent:'center'}}>
                                 {this.listing(row,i)}
                             </div>
                         ))}
+                        <h2 id='noResults' style={{display:'none'}}>No results</h2>
                     </div>
                 </Container>
                 </Container>

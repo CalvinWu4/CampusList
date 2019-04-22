@@ -116,15 +116,19 @@ class Services extends React.Component {
                         <div style={{display:'block', clear:'both'}}>
                             {listings['description']}
                         </div>
-                        <div style={{  position:'absolute', marginLeft:'auto', marginRight:'auto', bottom:5, left:22}}>
                             {parseFloat(listings['ratings'].length) > 0 ? (
-                                <StarRatings starDimension="30px"
-                                             rating={parseFloat(listings['rating'])}
-                                             starRatedColor="#245CB3"
-                                             numberOfStars={5}
-                                             name='rating'
-                                />):(<label>No Ratings</label>)}
-                        </div>
+                                <div style={{  position:'absolute', marginLeft:'auto', marginRight:'auto', bottom:5, left:22}}>
+                                    <StarRatings starDimension="30px"
+                                                 rating={parseFloat(listings['rating'])}
+                                                 starRatedColor="#245CB3"
+                                                 numberOfStars={5}
+                                                 name='rating'
+                                    />
+                                </div>
+                            ):(
+                                <div style={{  position:'absolute', marginLeft:'auto', marginRight:'auto', bottom:5, left:'33.33%'}}>
+                                    <label>No Ratings</label>
+                                </div>)}
                     </div>
                 </div>
             </Link>
@@ -134,22 +138,24 @@ class Services extends React.Component {
         return (
             <div>
                 <Navbar/>
-                <Container style={{marginTop: 45, marginBottom: 30, paddingLeft:0}}>
-                <h2>My Services</h2>
 
-                </Container>
-                <Container style={{maxHeight:'65vh', overflow:'auto' , border:'solid',borderColor:'grey'}}>
-                    <div style={{display:'inline-block'}}>
+
+                <Container style={{marginTop:'2%'}}>
+                    <div style={{textAlign:'center'}} >
+                    <h2 style={{display:'inline-block'}}>My Listings</h2>
+
+                <Button title="Add a service" href='/createlisting' color="success" style={{ borderRadius:100,width:'40px', height:'40px', padding:0, float:'right', display:'inline-block'}}>
+                    <FontAwesomeIcon icon="plus-circle" style={{width:'35px', height:'37px'}}/></Button>{' '}
+                    </div>
+                    <div style={{display:'flex', flexWrap:'wrap', textAlign:'center'}}>
                         {this.state.service_ids.map((row,i) => (
-                            <div style={{display:'inline-block', marginRight:'45px'}}>
+                            <div style={{display:'flex', width:'33.33%', justifyContent:'center'}}>
                                 {this.listing(row,i)}
                             </div>
                         ))}
                     </div>
                 </Container>
-                <Container style={{paddingLeft:0, marginTop:10}}>
-                    <Button href='/createlisting' color="success" style={{ borderRadius:100,width:'40px', height:'40px', padding:0}}><FontAwesomeIcon icon="plus-circle" style={{width:'35px', height:'37px'}}/></Button>{' '}
-                </Container>
+
             </div>
         )}
 
