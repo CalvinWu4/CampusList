@@ -182,15 +182,15 @@ export default class Example extends React.Component {
           <TabPane tabId="1">
             <Row>
                 <p style={{margin:'3%', width: '65%', fontFamily:'Lato', fontSize:'20px', display:'inline-block'}}>{this.state.listing['description']}</p>
-                <div style={{ height: '30vh', width: '25%', float:'right', display:'inline-block', marginTop:'30px'}}>
+                <div style={{ height: '28vh', width: '25%', float:'right', display:'inline-block', marginTop:'30px'}}>
                     <GoogleMapReact
                         bootstrapURLKeys={{ key:this.state.apiKey }}
                         defaultCenter={this.state.props.center}
                         defaultZoom={this.state.props.zoom}
                     >
                         <AnyReactComponent
-                            lat={43.0846}
-                            lng={77.6743}
+                            lat={100.0846}
+                            lng={200.6743}
                             text="My Marker"
                         />
                     </GoogleMapReact>
