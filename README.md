@@ -11,8 +11,8 @@ Ensure Google Chrome is installed on your machine.
 If not, install it from here: https://www.google.com/chrome/
 
 If you have:
-- Windows: Run `start-server.bat` then 'start-client.bat'
-- Linux or macOS: Run `start-server.sh` then 'start-client.sh'
+- Windows: Run `start-server.bat` then 'start-client.bat' in separate shell windows
+- Linux or macOS: Run `start-server.sh` then 'start-client.sh' in separate shell windows. On macOS, use the `source` command.
 
 The application will launch the website on your default browser.
 
