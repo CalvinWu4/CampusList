@@ -40,21 +40,22 @@ app.post('/api/listings', (req, res) => {
 
 app.post('/api/listings/rating', (req, res) => {
     console.log('Adding Listing rating');
-    listing = req.body;
+    listingId = req.body.listingId;
+    rating = req.body.rating;
+    review = req.body.review;
     modifyListings((data) => {
-        // Determine ID
-        var maxId = -1;
-        for (i = 0; i < data.listings.length; i++) {
-            id = data.listings[i].id;
-            if (id > maxId) {
-                maxId = id;
-            }
-        }
-        listing['id'] = maxId + 1;
+	index = data.listings.findIndex(listing => { return listing.id == listingId });
+	newData = data
+	newData.listings[index].ratings.push({
+	    rating: rating,
+	    review: review
+	});
 
-        newData = data;
-        newData.listings.push(listing);
-        return newData;
+	sum = newData.listings[index].ratings.map(entry => { return parseFloat(entry.rating) }).reduce((total, next) => { return total + next }, 0);
+	avg = sum / newData.listings[index].ratings.length;
+	newData.listings[index].rating = "" + avg.toFixed(2);
+	
+	return newData;
     });
 
     res.sendStatus(201);
