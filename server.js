@@ -6,26 +6,14 @@ const cors = require('cors');
 
 const app=express();
 
-// Serve static files from the React app
-app.use(express.static(path.join(__dirname, 'client/build')));
-
-//production mode
-if(process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, 'client/build')));
-  //
-  app.get('*', (req, res) => {
-    res.sendfile(path.join(__dirname = 'client/build/index.html'));
-  })
-}
+//Bodyparser middleware
+app.use(bodyParser.json());
+app.use(cors());
 
 //build mode
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname+'/client/public/index.html'));
 })
-
-//Bodyparser middleware
-app.use(bodyParser.json());
-app.use(cors());
 
 app.get('/api/listings', (req, res) => {
     fs = require('fs');
@@ -126,6 +114,18 @@ app.delete('/api/appointments', (req, res) => {
 
     res.sendStatus(204);
 });
+
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname, 'client/build')));
+
+//production mode
+if(process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, 'client/build')));
+  //
+  app.get('*', (req, res) => {
+    res.sendfile(path.join(__dirname = 'client/build/index.html'));
+  })
+}
 
 // Call with a lambda that takes the object from the JSON file, modifies it in some way, and returns it again.
 function modifyListings(convertHandler) {
