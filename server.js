@@ -10,10 +10,8 @@ const app=express();
 app.use(bodyParser.json());
 app.use(cors());
 
-//build mode
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname+'/client/public/index.html'));
-})
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname, 'client/build')));
 
 app.get('/api/listings', (req, res) => {
     fs = require('fs');
@@ -21,12 +19,14 @@ app.get('/api/listings', (req, res) => {
     listings = JSON.parse(data);
     res.json(listings);
 });
+
 app.get('/api/credentials', (req, res) => {
     fs = require('fs');
     data = fs.readFileSync('Data/credentials.json');
     credentials = JSON.parse(data);
     res.json(credentials);
 });
+
 app.post('/api/listings', (req, res) => {
     console.log('Adding Listing');
     listing = req.body;
@@ -115,9 +115,6 @@ app.delete('/api/appointments', (req, res) => {
     res.sendStatus(204);
 });
 
-// Serve static files from the React app
-app.use(express.static(path.join(__dirname, 'client/build')));
-
 //production mode
 if(process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, 'client/build')));
@@ -126,6 +123,11 @@ if(process.env.NODE_ENV === 'production') {
     res.sendfile(path.join(__dirname = 'client/build/index.html'));
   })
 }
+
+//build mode
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname+'/client/public/index.html'));
+})
 
 // Call with a lambda that takes the object from the JSON file, modifies it in some way, and returns it again.
 function modifyListings(convertHandler) {
