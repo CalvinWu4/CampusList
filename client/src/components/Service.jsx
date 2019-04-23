@@ -65,7 +65,7 @@ export default class Example extends React.Component {
 
 
     removeService() {
-	fetch('http://localhost:5000/api/listings/' + this.state.listing['id'], {
+	fetch('/api/listings/' + this.state.listing['id'], {
 	    method: 'DELETE'
 	})
 	.then(response => {
@@ -76,7 +76,7 @@ export default class Example extends React.Component {
     }
 
     book() {
-	fetch('http://localhost:5000/api/appointments' , {
+	fetch('/api/appointments' , {
             method: "POST",
 	    headers: {
                 'Content-type': 'application/json'
@@ -125,7 +125,7 @@ export default class Example extends React.Component {
             // Proptypes to enforce typing
             this.setState({listing:this.props.location.state})
         }
-        fetch('http://localhost:5000/api/credentials')
+        fetch('/api/credentials')
             .then(response => response.json())
             .then(data => this.setState( {apiKey: data['googleMaps']}));
 

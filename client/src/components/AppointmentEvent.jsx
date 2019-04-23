@@ -32,7 +32,7 @@ export default class AppointmentEvent extends React.Component {
     }
 
     submitFeedback(){
-        fetch('http://localhost:5000/api/listings/rating' , {
+        fetch('/api/listings/rating', {
             method: "POST",
             headers: {
                 'Content-type': 'application/json'
@@ -104,7 +104,7 @@ export default class AppointmentEvent extends React.Component {
     }
 
     cancelAppointment() {
-	fetch('http://localhost:5000/api/appointments' , {
+	fetch('/api/appointments' , {
             method: "DELETE",
 	    headers: {
                 'Content-type': 'application/json'

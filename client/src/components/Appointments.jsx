@@ -20,7 +20,7 @@ export default class Appointments extends React.Component {
     }
 
     componentWillMount() {
-		fetch('http://localhost:5000/api/listings')
+		fetch('api/listings')
 	.then(response => response.json())
 	.then(data => this.setAppointments( data ));
     }
