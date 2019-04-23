@@ -31,5 +31,6 @@
     "ignore": [
       "Data/*"
     ]
-  }
+  },
+  "proxy": "http://localhost:5000"
 }
