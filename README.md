@@ -1,5 +1,5 @@
 # CampusList
-Students can make appointments for services offered by other students.
+A project for SWEN 444 where Students can make appointments for services offered by other students.
 
 # Installation
 Ensure `npm` (Node Package Manager) is installed on your machine. 
