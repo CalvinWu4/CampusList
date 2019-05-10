@@ -38,4 +38,5 @@ This is a design prototype. Some limitations exist.
 - You cannot search by category
 - Google Maps location integration is not implemented
 - Custom services may not have photos
-- Time is ignored for bookings and there is a time zone issue where appointments booked in Chrome are one day off.
+- No date validation for appointments
+- Appointments are set to last for 30 minutes
