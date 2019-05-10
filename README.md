@@ -34,9 +34,8 @@ This is a design prototype. Some limitations exist.
 
 # Known Limitations
 - Accounts are not persisted
-- There is no moderator account
+- "My Services" shows all the services posted
 - You cannot search by category
-- Google Maps location integration is not implemented
-- Custom services may not have photos
+- No photo picker or location field for "Create a Listing"
 - No date validation for appointments
 - Appointments are set to last for 30 minutes
