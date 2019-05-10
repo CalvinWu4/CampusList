@@ -1,7 +1,7 @@
 # CampusList
 A project for SWEN 444 where students can make appointments for services offered by other students.
 
-URL: https://campuslist.herokuapp.com/
+https://campuslist.herokuapp.com/
 
 # Installation
 Ensure `npm` (Node Package Manager) is installed on your machine. 
